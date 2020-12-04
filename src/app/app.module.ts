@@ -8,6 +8,8 @@ import { SearchComponent } from './search/search.component';
 import { UnprocessedMessagesSearchComponent } from './search/unprocessed-messages-search/unprocessed-messages-search.component';
 import { IssuesSearchComponent } from './search/issues-search/issues-search.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UnprocessedMessageThumbnailComponent } from './search/unprocessed-messages-search/unprocessed-message-thumbnail/unprocessed-message-thumbnail/unprocessed-message-thumbnail.component';
+import { IssueMessageThumbnailComponent } from './search/issues-search/issue-message-thumbnail/issue-message-thumbnail.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +17,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     SearchComponent,
     UnprocessedMessagesSearchComponent,
-    IssuesSearchComponent
+    IssuesSearchComponent,
+    IssueMessageThumbnailComponent,
+    UnprocessedMessageThumbnailComponent
   ],
   imports: [
     BrowserModule,

@@ -10,7 +10,7 @@ import { UnprocessedMessagesService } from 'src/app/common/services/unprocessed-
 })
 export class UnprocessedMessagesSearchComponent implements OnInit {
 
-  elementsFound: UnprocessedMessageResponseDTO[] = [];
+  resultsFound: UnprocessedMessageResponseDTO[] = [];
   pageSize = 10;
   pageNumber = 10;
 
@@ -21,18 +21,24 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   ngOnInit(): void {}
 
   doSearch(): void {
-    this.messagesService.search(0, 10);
+    this.messagesService.search(0, 10).subscribe(results => {
+      console.log(`Gathered ${results.length} elements during search`);
+      this.resultsFound = results;
+    });
   }
 
   deleteMessage(messageId: number): void {
+    console.log('called deleteMessage');
     this.messagesService.deleteMessage(messageId);
   }
 
   republishMessage(messageId: number): void {
+    console.log('called republishMessage');
     this.messagesService.republishMessage(messageId);
   }
 
   archiveMessage(messageId: number): void {
+    console.log('called archiveMessage');
     this.messagesService.archiveMessage(messageId);
   }
 }

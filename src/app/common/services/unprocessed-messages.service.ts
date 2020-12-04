@@ -16,7 +16,7 @@ export class UnprocessedMessagesService {
     subscriber?: number,
     resource?: string,
     httpCode?: string
-  ): Observable<UnprocessedMessageResponseDTO> {
+  ): Observable<UnprocessedMessageResponseDTO[]> {
     throw new Error('not implemented!');
   }
 

@@ -22,12 +22,13 @@ export class IssuesSearchComponent implements OnInit {
 
   search(): void {
     this.messagesService.search(this.searchCriteria).subscribe((results) => {
-      console.info(`gathered ${results.length} elements during search`);
+      console.log(`gathered ${results.length} elements during search`);
       this.resultsFound = results;
     });
   }
 
   fetchStackTrace(uuid: string): void {
+    console.log('called fetchStackTrace');
     const stackTrace = this.messagesService.fetchStackTrace(uuid);
     alert(stackTrace);
   }
