@@ -28,7 +28,7 @@ export class UnprocessedMessagesService {
     throw new Error('not implemented!');
   }
 
-  archoveMessage(id: number): void {
+  archiveMessage(id: number): void {
     throw new Error('not implemented!');
   }
 }

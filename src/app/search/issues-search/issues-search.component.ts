@@ -1,15 +1,34 @@
 import { Component, OnInit } from '@angular/core';
+import { IssueMessageResponseDTO } from 'src/app/common/DTO/issueMessageResponseDTO';
+import { IssueMessageSearchCriteria } from 'src/app/common/entities/issueMessageSearchCriteria';
+import { IssueMessagesService } from 'src/app/common/services/issue-messages.service';
 
 @Component({
   selector: 'app-issues-search',
   templateUrl: './issues-search.component.html',
-  styleUrls: ['./issues-search.component.css']
+  styleUrls: ['./issues-search.component.css'],
 })
 export class IssuesSearchComponent implements OnInit {
+  searchCriteria: IssueMessageSearchCriteria = new IssueMessageSearchCriteria(
+    0,
+    10
+  );
 
-  constructor() { }
+  resultsFound: IssueMessageResponseDTO[] = [];
 
-  ngOnInit(): void {
+  constructor(private messagesService: IssueMessagesService) {}
+
+  ngOnInit(): void {}
+
+  search(): void {
+    this.messagesService.search(this.searchCriteria).subscribe((results) => {
+      console.info(`gathered ${results.length} elements during search`);
+      this.resultsFound = results;
+    });
   }
 
+  fetchStackTrace(uuid: string): void {
+    const stackTrace = this.messagesService.fetchStackTrace(uuid);
+    alert(stackTrace);
+  }
 }
