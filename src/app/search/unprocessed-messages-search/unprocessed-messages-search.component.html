@@ -1,1 +1,12 @@
 <p>unprocessed-messages-search works!</p>
+<div>
+    <ul>
+        <li>
+            <app-unprocessed-message-thumbnail *ngFor='let message of resultsFound' [message]='message'
+            (deleteMessageEvent)='deleteMessage($event)'
+            (republishMessageEvent)='republishMessage($event)'
+            (archiveMessageEvent)='archiveMessage($event)'
+            ></app-unprocessed-message-thumbnail>
+        </li>
+    </ul>
+</div>

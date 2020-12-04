@@ -1,1 +1,8 @@
 <p>issues-search works!</p>
+<ul>
+    <li>
+        <app-issue-message-thumbnail *ngFor='let message of resultsFound' [message]='message'
+        (fetchStackTraceEvent)='fetchStackTrace($event)'
+        ></app-issue-message-thumbnail>
+    </li>
+</ul>
