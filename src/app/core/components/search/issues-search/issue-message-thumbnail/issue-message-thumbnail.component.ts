@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { IssueMessageResponseDTO } from 'src/app/common/DTO/issueMessageResponseDTO';
+import { IssueMessageResponseDTO } from 'src/app/shared/DTO/issueMessageResponseDTO';
 
 @Component({
   selector: 'app-issue-message-thumbnail',

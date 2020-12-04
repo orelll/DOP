@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { UnprocessedMessageResponseDTO } from 'src/app/common/DTO/unprocessedMessageResponseDTO';
+import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
 
 @Component({
   selector: 'app-unprocessed-message-thumbnail',

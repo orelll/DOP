@@ -11,6 +11,7 @@ const routes: Routes = [
   },
   { path: 'issues-messages-search', component: IssuesSearchComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
+
   { path: 'home', component: HomeComponent },
 ];
 
