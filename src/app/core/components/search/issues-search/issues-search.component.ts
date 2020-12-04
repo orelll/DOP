@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IssueMessageResponseDTO } from 'src/app/common/DTO/issueMessageResponseDTO';
-import { IssueMessageSearchCriteria } from 'src/app/common/entities/issueMessageSearchCriteria';
-import { IssueMessagesService } from 'src/app/common/services/issue-messages.service';
+import { IssueMessageResponseDTO } from 'src/app/shared/DTO/issueMessageResponseDTO';
+import { IssueMessageSearchCriteria } from 'src/app/shared/entities/issueMessageSearchCriteria';
+import { IssueMessagesService } from 'src/app/shared/services/issue-messages.service';
 
 @Component({
   selector: 'app-issues-search',

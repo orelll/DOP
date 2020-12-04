@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { IssuesSearchComponent } from './search/issues-search/issues-search.component';
-import { UnprocessedMessagesSearchComponent } from './search/unprocessed-messages-search/unprocessed-messages-search.component';
+import { HomeComponent } from './core/components/home/home.component';
+import { IssuesSearchComponent } from './core/components/search/issues-search/issues-search.component';
+import { UnprocessedMessagesSearchComponent } from './core/components/search/unprocessed-messages-search/unprocessed-messages-search.component';
 
 const routes: Routes = [
   {
