@@ -7,6 +7,7 @@ import { HomeComponent } from './home/home.component';
 import { SearchComponent } from './search/search.component';
 import { UnprocessedMessagesSearchComponent } from './search/unprocessed-messages-search/unprocessed-messages-search.component';
 import { IssuesSearchComponent } from './search/issues-search/issues-search.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { IssuesSearchComponent } from './search/issues-search/issues-search.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
