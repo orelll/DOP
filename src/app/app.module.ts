@@ -6,13 +6,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { AppComponent } from './app.component';
-import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [],
   imports: [
     BrowserModule,
-    RouterModule,
     BrowserAnimationsModule,
     CoreModule,
     AppRoutingModule,

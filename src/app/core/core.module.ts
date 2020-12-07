@@ -8,13 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
 import { AppComponent } from '../app.component';
-import { HomeComponent } from './components/home/home.component';
-import { UnprocessedMessagesSearchComponent } from './components/search/unprocessed-messages-search/unprocessed-messages-search.component';
-import { IssuesSearchComponent } from './components/search/issues-search/issues-search.component';
-import { SidemenuComponent } from './components/home/sidemenu/sidemenu.component';
-import { IssueMessageThumbnailComponent } from './components/search/issues-search/issue-message-thumbnail/issue-message-thumbnail.component';
-import { UnprocessedMessageThumbnailComponent } from './components/search/unprocessed-messages-search/unprocessed-message-thumbnail/unprocessed-message-thumbnail/unprocessed-message-thumbnail.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { HomeComponent, IssueMessageThumbnailComponent, IssuesSearchComponent, SidemenuComponent, UnprocessedMessagesSearchComponent, UnprocessedMessageThumbnailComponent } from './index';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -27,7 +22,7 @@ import { AppRoutingModule } from '../app-routing.module';
     SidemenuComponent,
   ],
   imports: [
-
+    RouterModule,
     CommonModule,
     MatButtonModule,
     MatTabsModule,
