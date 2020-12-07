@@ -1,5 +1,5 @@
 
-export class UnprocessedMessageSearch {
+export class UnprocessedMessageSearchCriteria {
   public page: number;
   public pageSize: number;
   public publisher: number;

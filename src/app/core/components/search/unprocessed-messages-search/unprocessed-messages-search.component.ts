@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
-import { UnprocessedMessageSearch as UnprocessedMessageSearchCriteria } from 'src/app/shared/entities/unprosessedMessageSearchCriteria';
+import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
 
 @Component({

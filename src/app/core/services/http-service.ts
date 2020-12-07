@@ -1,16 +1,19 @@
-import { HttpClient } from '@angular/common/http';
+
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { finalize } from 'rxjs/internal/operators';
 
 import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
 
 /**
  * This is the wrapper for the angular HttpClient we should use in bamf-maris instead of the original HttpClient.
  * Should additional methods of the HttpClient be needed, they can simply be added with the same pattern
  * as those already existing.
  */
-@Injectable()
+@Injectable({
+    providedIn: 'root',
+  })
 export class HttpService {
 
     constructor(
