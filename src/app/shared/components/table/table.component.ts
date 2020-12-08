@@ -4,6 +4,7 @@ import {
   Input,
   ComponentFactoryResolver,
   ViewChild,
+  ViewContainerRef,
 } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { Sort, SortDirection } from '@angular/material/sort';
@@ -11,7 +12,7 @@ import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/columnDecorator';
 import { IssueMessageThumbnailComponent } from 'src/app/core';
-import { AppComponentContainer } from '../anchor.directive';
+import { CellTypeChangerDirective } from '../cell-type-changer.directive';
 
 @Component({
   selector: 'app-table',
@@ -37,15 +38,11 @@ export class TableComponent implements OnInit {
   get data(): any[] {
     return this._data;
   }
-  @Input() instance: any;
-  @ViewChild(AppComponentContainer, {static: true}) anchor: AppComponentContainer;
-  
+
   columns: ColumnModel[];
   displayedColumns: string[];
 
-  constructor(
-    private componentFactoryResolver: ComponentFactoryResolver
-  ) {}
+  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
 
   ngOnInit(): void {}
 
@@ -56,20 +53,7 @@ export class TableComponent implements OnInit {
       : this._originalData;
   }
 
-  prepareCell(cellValue: any, type: string): any {
-   
-
-    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(IssueMessageThumbnailComponent);
-
-    const viewContainerRef =  this.anchor.vc;
-    viewContainerRef.clear();
-
-    const componentRef = viewContainerRef.createComponent<IssueMessageThumbnailComponent>(componentFactory);
-    // componentRef.instance.data = adItem.data;
-
-        return 'DUPA';
-    
-  }
+  ngAfterView(): void {}
 
   renderComponent(columnKey: string): boolean {
     return columnKey.includes('Component');

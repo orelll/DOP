@@ -14,7 +14,7 @@ import { HomeComponent, IssueMessageThumbnailComponent, IssuesSearchComponent, S
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { TableComponent } from '../shared/components/table/table.component';
-import { AppComponentContainer } from '../shared/components/anchor.directive';
+import { CellTypeChangerDirective } from '../shared/components/cell-type-changer.directive';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { AppComponentContainer } from '../shared/components/anchor.directive';
     UnprocessedMessageThumbnailComponent,
     SidemenuComponent,
     TableComponent,
-    AppComponentContainer
+    CellTypeChangerDirective
   ],
   imports: [
     BrowserModule,
@@ -49,7 +49,7 @@ import { AppComponentContainer } from '../shared/components/anchor.directive';
     UnprocessedMessageThumbnailComponent,
     SidemenuComponent,
     TableComponent,
-    AppComponentContainer
+    CellTypeChangerDirective
   ],
 })
 export class CoreModule {}
