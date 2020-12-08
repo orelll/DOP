@@ -7,6 +7,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import {MatTableModule} from '@angular/material/table';
+import {MatDatepickerModule} from '@angular/material/datepicker'; 
 
 import { AppComponent } from '../app.component';
 import { HomeComponent, IssueMessageThumbnailComponent, IssuesSearchComponent, SidemenuComponent, UnprocessedMessagesSearchComponent, UnprocessedMessageThumbnailComponent } from './index';
@@ -34,7 +35,8 @@ import { TableComponent } from '../shared/components/table/table.component';
     MatTabsModule,
     MatToolbarModule,
     MatIconModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatDatepickerModule
   ],
   exports: [
     AppComponent,

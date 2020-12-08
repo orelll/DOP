@@ -1,5 +1,5 @@
-import { MatButton } from '@angular/material/button';
 import { autoserializeAs } from 'cerializr';
+import { IssueMessageThumbnailComponent } from 'src/app/core';
 import { Column, logType } from '../decorators/columnDecorator';
 
 export class IssueMessage {
@@ -28,13 +28,8 @@ export class IssueMessage {
   @logType(String)
   message: string;
 
-  @autoserializeAs(MatButton)
+  @autoserializeAs(IssueMessageThumbnailComponent)
   @Column({ order: 6, name: 'x' })
-  @logType(MatButton)
-  actions: MatButton;
-
-  @Column({ order: 7, name: 'x' })
-  fetchCallStack(): void {
-    console.log('trololoo');
-  }
+  @logType(IssueMessageThumbnailComponent)
+  actions: IssueMessageThumbnailComponent;
 }
