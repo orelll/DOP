@@ -32,4 +32,9 @@ export class IssueMessage {
   @Column({ order: 6, name: 'x' })
   @logType(MatButton)
   actions: MatButton;
+
+  @Column({ order: 7, name: 'x' })
+  fetchCallStack(): void {
+    console.log('trololoo');
+  }
 }

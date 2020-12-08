@@ -36,22 +36,22 @@ export class TableComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  sortData(params: Sort) {
+  sortData(params: Sort): void {
     const direction: SortDirection = params.direction;
     this.data = direction
       ? orderBy(this.data, [params.active], [direction])
       : this._originalData;
   }
 
-  private buildColumns() {
+  private buildColumns(): void {
     this.columns = this._tableModel.columns;
     this.sortColumns();
     this.displayedColumns = this.columns.map(col => col.key);
   }
 
-  private sortColumns() {
+  private sortColumns(): void {
     this.columns = sortBy(this.columns, ['order']);
   }
 }
