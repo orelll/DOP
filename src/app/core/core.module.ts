@@ -14,6 +14,7 @@ import { HomeComponent, IssueMessageThumbnailComponent, IssuesSearchComponent, S
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { TableComponent } from '../shared/components/table/table.component';
+import { AppComponentContainer } from '../shared/components/anchor.directive';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TableComponent } from '../shared/components/table/table.component';
     IssueMessageThumbnailComponent,
     UnprocessedMessageThumbnailComponent,
     SidemenuComponent,
-    TableComponent
+    TableComponent,
+    AppComponentContainer
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { TableComponent } from '../shared/components/table/table.component';
     IssueMessageThumbnailComponent,
     UnprocessedMessageThumbnailComponent,
     SidemenuComponent,
-    TableComponent
+    TableComponent,
+    AppComponentContainer
   ],
 })
 export class CoreModule {}

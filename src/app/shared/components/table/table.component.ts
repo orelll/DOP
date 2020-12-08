@@ -1,11 +1,17 @@
-import { Component, OnInit, Input, ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ComponentFactoryResolver,
+  ViewChild,
+} from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/columnDecorator';
-import { MatDatepickerModule } from '@angular/material/datepicker';
 import { IssueMessageThumbnailComponent } from 'src/app/core';
+import { AppComponentContainer } from '../anchor.directive';
 
 @Component({
   selector: 'app-table',
@@ -32,11 +38,14 @@ export class TableComponent implements OnInit {
     return this._data;
   }
   @Input() instance: any;
-
+  @ViewChild(AppComponentContainer, {static: true}) anchor: AppComponentContainer;
+  
   columns: ColumnModel[];
   displayedColumns: string[];
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver, public viewContainerRef: ViewContainerRef) { }
+  constructor(
+    private componentFactoryResolver: ComponentFactoryResolver
+  ) {}
 
   ngOnInit(): void {}
 
@@ -48,32 +57,28 @@ export class TableComponent implements OnInit {
   }
 
   prepareCell(cellValue: any, type: string): any {
-    switch (type) {
-      case 'String':
-        return cellValue;
-      case 'Date':
-        var picker = new MatDatepickerModule();
+   
 
-        try {
+    const componentFactory = this.componentFactoryResolver.resolveComponentFactory(IssueMessageThumbnailComponent);
 
+    const viewContainerRef =  this.anchor.vc;
+    viewContainerRef.clear();
 
-          const componentFactory = this.componentFactoryResolver.resolveComponentFactory(IssueMessageThumbnailComponent);
+    const componentRef = viewContainerRef.createComponent<IssueMessageThumbnailComponent>(componentFactory);
+    // componentRef.instance.data = adItem.data;
 
-          const viewContainerRef = this.viewContainerRef;
-          var x = componentFactory.create(viewContainerRef.injector);
-          return x ; //const componentRef = viewContainerRef.createComponent<MatDatepickerModule>(componentFactory);
-        } catch (error) {
+        return 'DUPA';
+    
+  }
 
-        }
-        //componentRef.instance.data = adItem.data;
-        return cellValue;
-    }
+  renderComponent(columnKey: string): boolean {
+    return columnKey.includes('Component');
   }
 
   private buildColumns() {
     this.columns = this._tableModel.columns;
     this.sortColumns();
-    this.displayedColumns = this.columns.map(col => col.key);
+    this.displayedColumns = this.columns.map((col) => col.key);
   }
 
   private sortColumns(): void {
