@@ -3,10 +3,10 @@ import {
   Directive,
   Input,
   OnInit,
+  Type,
   ViewContainerRef,
 } from '@angular/core';
 import { IssueMessageThumbnailComponent } from 'src/app/core';
-import { ColumnModel } from '../models';
 
 @Directive({
   selector: '[appCellTypeChanger]',
@@ -14,29 +14,45 @@ import { ColumnModel } from '../models';
 export class CellTypeChangerDirective implements OnInit {
   @Input() cellType: string;
   @Input() cellRowData: any;
-  @Input() cellColumnKey: string;
-  @Input() cellColumnDefinitions: ColumnModel;
+  @Input() cellId: number;
+
+  private supportedComponents: { [id: string]: any } = {};
 
   constructor(
     public vc: ViewContainerRef,
     private componentFactoryResolver: ComponentFactoryResolver
-  ) {}
+  ) {
+    this.buildSupportedList();
+  }
 
   ngOnInit(): any {
     this.initCell();
   }
 
   initCell(): void {
+    const entry = this.getEntry(this.cellType);
+    
     const ref: ViewContainerRef = this.vc;
-    var xxx = this.cellType;
     const componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      IssueMessageThumbnailComponent
+      entry
     );
     const viewContainerRef = ref;
     viewContainerRef.clear();
+    const componentRef = viewContainerRef.createComponent<any>(componentFactory);
+  }
 
-    const componentRef = viewContainerRef.createComponent<IssueMessageThumbnailComponent>(
-      componentFactory
-    );
+  private buildSupportedList(): void {
+    this.supportedComponents = [];
+
+    this.addEntry(this.supportedComponents, IssueMessageThumbnailComponent);
+  }
+
+  private addEntry(collection: { [id: string]: any }, entry: any): void {
+    const stringName = entry.name;
+    collection[stringName] = entry;
+  }
+
+  private getEntry(key: string): any {
+    return this.supportedComponents[key];
   }
 }

@@ -14,7 +14,7 @@
     <td mat-cell *matCellDef="let element">
       <div *ngIf="renderComponent(column.propertyType); else elseBlock">
 
-        <ng-container [cellRowData]="element" [cellColumnKey]="column.key" [cellColumnDefinitions]="column" appCellTypeChanger ></ng-container>
+        <ng-container [cellRowData]="element" [cellType]="column.propertyType" [cellId]="1" appCellTypeChanger ></ng-container>
 
       </div>
       <div>
