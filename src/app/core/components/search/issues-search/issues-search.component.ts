@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
@@ -18,11 +19,35 @@ export class IssuesSearchComponent implements OnInit {
 
   resultsFound: IssueMessage[];
   tableSchema: TableModel;
+  searchForm: FormGroup;
 
-  constructor(private messagesService: IssueMessagesService) {}
+  constructor(
+    private messagesService: IssueMessagesService,
+    private fb: FormBuilder
+  ) {}
 
   ngOnInit(): void {
+    this.prepareSearchForm();
     this.tableSchema = new IssueMessage()[tableSymbol];
+  }
+  // profileForm = this.fb.group({
+  //   firstName: [''],
+  //   lastName: [''],
+  //   address: this.fb.group({
+  //     street: [''],
+  //     city: [''],
+  //     state: [''],
+  //     zip: ['']
+  //   }),
+
+  prepareSearchForm(): void {
+    this.searchForm = this.fb.group({
+      startDate: [''],
+      endDate: [''],
+      UUID: [''],
+      message: [''],
+      exception: [''],
+    });
   }
 
   search(): void {
@@ -43,5 +68,22 @@ export class IssuesSearchComponent implements OnInit {
     console.log('called fetchStackTrace');
     const stackTrace = this.messagesService.fetchStackTrace(uuid);
     alert(stackTrace);
+  }
+
+  clearInput(propertyName: string): void {
+    switch (propertyName) {
+      case 'UUID':
+        this.searchForm.patchValue({ UUID: '' });
+        break;
+      case 'message':
+        this.searchForm.patchValue({ message: '' });
+        break;
+      case 'exception':
+        this.searchForm.patchValue({ exception: '' });
+    }
+  }
+
+  onSubmit(): void {
+    console.log(this.searchForm.value);
   }
 }

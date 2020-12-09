@@ -1,13 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import {MatTableModule} from '@angular/material/table';
-import {MatDatepickerModule} from '@angular/material/datepicker'; 
+import { MatTableModule } from '@angular/material/table';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatGridListModule } from '@angular/material/grid-list';
+import {MatInputModule} from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 
 import { AppComponent } from '../app.component';
 import { RouterModule } from '@angular/router';
@@ -19,7 +25,6 @@ import { IssuesSearchActionsComponent } from './components/search/issues-search/
 import { HomeComponent } from './components/home/home.component';
 import { UnprocessedMessagesSearchComponent } from './components/search/unprocessed-messages-search/unprocessed-messages-search.component';
 import { IssuesSearchComponent } from './components/search/issues-search/issues-search.component';
-import { SidemenuComponent } from './components/home/sidemenu/sidemenu.component';
 
 @NgModule({
   declarations: [
@@ -27,32 +32,38 @@ import { SidemenuComponent } from './components/home/sidemenu/sidemenu.component
     HomeComponent,
     UnprocessedMessagesSearchComponent,
     IssuesSearchComponent,
-    SidemenuComponent,
     TableComponent,
     CellTypeChangerDirective,
     UnprocessedSearchActionsComponent,
-    IssuesSearchActionsComponent
+    IssuesSearchActionsComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
     CommonModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatNativeDateModule,
     MatTableModule,
     MatButtonModule,
     MatTabsModule,
     MatToolbarModule,
-    MatIconModule,
     MatSidenavModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatSelectModule,
+    MatGridListModule,
+    MatOptionModule,
+    MatInputModule
   ],
   exports: [
     AppComponent,
     HomeComponent,
     UnprocessedMessagesSearchComponent,
     IssuesSearchComponent,
-    SidemenuComponent,
     TableComponent,
-    CellTypeChangerDirective
+    CellTypeChangerDirective,
   ],
 })
 export class CoreModule {}

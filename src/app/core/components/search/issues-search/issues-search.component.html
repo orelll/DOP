@@ -1,2 +1,64 @@
-<button (click)='search()'>Search</button>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+  <mat-grid-list cols="4" rowHeight="50px">
+    <mat-grid-tile>
+      <label for='UUID'>UUID</label>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <input matInput type="text" formControlName="UUID" id="UUID">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('UUID')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <label for='message'>Message</label>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <input matInput type="text" formControlName="message" id="message">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('message')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+
+      <label for='exception'>Exception</label>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <input matInput type="text" formControlName="exception" id="exception">
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('exception')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <mat-label>Start Date:</mat-label>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <input matInput [matDatepicker]="startPicker" formControlName="startDate">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-grid-tile>
+    <mat-grid-tile>
+
+      <mat-label>End Date:</mat-label>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <input matInput [matDatepicker]="endPicker" formControlName="endDate">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <input type="submit" value="search">
+    </mat-grid-tile>
+  </mat-grid-list>
+
+
+
+</form>
+
 <app-table [data]="resultsFound" [dataSchema]="tableSchema"></app-table>
