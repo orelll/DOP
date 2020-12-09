@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
 import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
+import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
@@ -10,7 +12,8 @@ import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-
   styleUrls: ['./unprocessed-messages-search.component.css'],
 })
 export class UnprocessedMessagesSearchComponent implements OnInit {
-  resultsFound: UnprocessedMessageResponseDTO[] = [];
+  resultsFound: UnprocessedMessage[] = [];
+  tableSchema: TableModel;
 
   searchCriteria: UnprocessedMessageSearchCriteria = new UnprocessedMessageSearchCriteria(
     0,
@@ -19,7 +22,9 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
 
   constructor(private messagesService: UnprocessedMessagesService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.tableSchema = new UnprocessedMessage()[tableSymbol];
+  }
 
   search(): void {
     this.messagesService.search(this.searchCriteria).subscribe((e) => {

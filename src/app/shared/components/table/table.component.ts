@@ -1,9 +1,4 @@
-import {
-  Component,
-  OnInit,
-  Input,
-  ComponentFactoryResolver
-} from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
@@ -26,15 +21,21 @@ export class TableComponent implements OnInit {
       this._tableModel = this._data[0][tableSymbol];
       this.buildColumns();
       if (!this._originalData.length) {
-        // Keep original order of data
         this._originalData = cloneDeep(this._data);
       }
     }
   }
+
   get data(): any[] {
     return this._data;
   }
 
+  @Input() set dataSchema(value: TableModel) {
+    if (value) {
+      this._tableModel = value;
+      this.buildColumns();
+    }
+  }
   columns: ColumnModel[];
   displayedColumns: string[];
 
