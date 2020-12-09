@@ -2,17 +2,13 @@ import {
   Component,
   OnInit,
   Input,
-  ComponentFactoryResolver,
-  ViewChild,
-  ViewContainerRef,
+  ComponentFactoryResolver
 } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/columnDecorator';
-import { IssueMessageThumbnailComponent } from 'src/app/core';
-import { CellTypeChangerDirective } from '../cell-type-changer.directive';
 
 @Component({
   selector: 'app-table',
@@ -42,7 +38,7 @@ export class TableComponent implements OnInit {
   columns: ColumnModel[];
   displayedColumns: string[];
 
-  constructor(private componentFactoryResolver: ComponentFactoryResolver) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
@@ -59,7 +55,7 @@ export class TableComponent implements OnInit {
     return columnKey.includes('Component');
   }
 
-  private buildColumns() {
+  private buildColumns(): void {
     this.columns = this._tableModel.columns;
     this.sortColumns();
     this.displayedColumns = this.columns.map((col) => col.key);

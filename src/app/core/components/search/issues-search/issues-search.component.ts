@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IssueMessage } from 'src/app/shared';
+import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
 import { IssueMessagesService } from 'src/app/shared/services/issue-messages.service';
 

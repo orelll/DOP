@@ -1,5 +1,6 @@
 import { ComponentRef, Injectable } from '@angular/core';
-import { IssueMessageThumbnailComponent } from 'src/app/core';
+import { IssuesSearchActionsComponent } from 'src/app/core/components/search/issues-search/issues-actions/issues-search-actions/issues-search-actions.component';
+import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions/unprocessed-search-actions.component';
 
 @Injectable({
   providedIn: 'root',
@@ -35,13 +36,18 @@ export class TypesMappingService {
   private buildSupportedList(): void {
     this.supportedComponents = [];
 
-    this.addTypeEntry(this.supportedComponents, IssueMessageThumbnailComponent);
+    this.addTypeEntry(this.supportedComponents, IssuesSearchActionsComponent);
+    this.addTypeEntry(this.supportedComponents, UnprocessedSearchActionsComponent);
   }
 
   private buildActions(): void {
     this.addActionEntry(
-      IssueMessageThumbnailComponent,
-      this.handleIssueMessageThumbnailComponentCration
+      IssuesSearchActionsComponent,
+      this.handleIssuesSearchActionsComponentCration
+    );
+    this.addActionEntry(
+      UnprocessedSearchActionsComponent,
+      this.handleUnprocessedSearchActionsComponentCration
     );
   }
 
@@ -62,12 +68,23 @@ export class TypesMappingService {
     collection[stringName] = entry;
   }
 
-  private handleIssueMessageThumbnailComponentCration(
+  private handleIssuesSearchActionsComponentCration(
     cellRowData: any,
     cellType: string,
     componentRef: ComponentRef<any>
   ): void {
-    const component = componentRef.instance as IssueMessageThumbnailComponent;
+    const component = componentRef.instance as IssuesSearchActionsComponent;
+
+    component.message = cellRowData;
+  }
+
+
+  private handleUnprocessedSearchActionsComponentCration(
+    cellRowData: any,
+    cellType: string,
+    componentRef: ComponentRef<any>
+  ): void {
+    const component = componentRef.instance as UnprocessedSearchActionsComponent;
 
     component.message = cellRowData;
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
+import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
 
@@ -9,21 +10,33 @@ import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-
   styleUrls: ['./unprocessed-messages-search.component.css'],
 })
 export class UnprocessedMessagesSearchComponent implements OnInit {
-
   resultsFound: UnprocessedMessageResponseDTO[] = [];
-  pageSize = 10;
-  pageNumber = 10;
 
-  searchCriteria: UnprocessedMessageSearchCriteria = new UnprocessedMessageSearchCriteria(0, 10);
+  searchCriteria: UnprocessedMessageSearchCriteria = new UnprocessedMessageSearchCriteria(
+    0,
+    10
+  );
 
   constructor(private messagesService: UnprocessedMessagesService) {}
 
   ngOnInit(): void {}
 
-  doSearch(): void {
-    this.messagesService.search(0, 10).subscribe(results => {
-      console.log(`Gathered ${results.length} elements during search`);
-      this.resultsFound = results;
+  search(): void {
+    this.messagesService.search(this.searchCriteria).subscribe((e) => {
+      this.resultsFound = e.map((DTO) => {
+        const message = new UnprocessedMessage();
+        message.publisher = DTO.publisher;
+        message.company = DTO.company;
+        message.subscriber = DTO.subscriber;
+        message.resource = DTO.resource;
+        message.event = DTO.event;
+        message.errorCode = DTO.errorCode;
+        message.errorMessage = DTO.errorMessage;
+        message.errorDetails = DTO.errorDetails;
+        message.message = DTO.message;
+        message.id = DTO.id;
+        return message;
+      });
     });
   }
 
