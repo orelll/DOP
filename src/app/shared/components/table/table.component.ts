@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
-import { MatSort, Sort, SortDirection } from '@angular/material/sort';
+import { MatSort, MatSortModule, Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/columnDecorator';
@@ -46,7 +46,7 @@ export class TableComponent implements OnInit {
   }
   columns: ColumnModel[];
   displayedColumns: string[];
-  dataSource = new MatTableDataSource;
+  dataSource = new MatTableDataSource();
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;

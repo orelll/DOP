@@ -1,5 +1,5 @@
 export class ColumnModel {
-  /** List of options */
+  
   key: string;
   order: number;
   propertyType: any;

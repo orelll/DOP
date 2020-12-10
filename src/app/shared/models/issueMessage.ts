@@ -4,7 +4,7 @@ import { Column, LogType } from '../decorators/columnDecorator';
 
 export class IssueMessage {
   @autoserializeAs(String)
-  @Column({ order: 1, name: 'Microservice Name' })
+  @Column({ order: 1, name: 'Microservice Name', canSort: true })
   @LogType(String)
   microServiceName: string;
 
@@ -14,7 +14,7 @@ export class IssueMessage {
   UUID: string;
 
   @autoserializeAs(Date)
-  @Column({ order: 5, name: 'Time Stamp'  })
+  @Column({ order: 5, name: 'Time Stamp', canSort: true })
   @LogType(Date)
   timeStamp: Date;
 

@@ -33,6 +33,7 @@ import { YesNoDialogComponent } from '../shared/components/dialogs/yes-no/yes-no
 import { RepublishDialogComponent } from './components/search/unprocessed-messages-search/dialogs/republish-dialog/republish-dialog.component';
 import { ArchiveDialogComponent } from './components/search/unprocessed-messages-search/dialogs/archive-dialog/archive-dialog.component';
 import { DeleteDialogComponent } from './components/search/unprocessed-messages-search/dialogs/delete-dialog/delete-dialog.component';
+import { MatSortModule } from '@angular/material/sort';
 
 
 @NgModule({
@@ -72,7 +73,8 @@ import { DeleteDialogComponent } from './components/search/unprocessed-messages-
     MatInputModule,
     MatDialogModule,
     MatSnackBarModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatSortModule
   ],
   exports: [
     AppComponent,
