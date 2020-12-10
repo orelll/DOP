@@ -1,13 +1,32 @@
 table {
-    width: 100%;
-  }
-  
-  .sticky-paginator{
-    position: absolute;
-    bottom: 0;
-    margin-right: 10px;
-    margin-left: auto;
-    width: 30%;
-    max-width: 450px;
-    min-width: 300px;
-  }
+  width: 100%;
+}
+.main-container {
+  margin: 0 auto;
+  padding: 10px;
+  margin-top: 40px;
+}
+.sticky-paginator {
+  position: sticky;
+  bottom: 0;
+  margin-right: 10px;
+  margin-left: auto;
+}
+.filter-holder {
+  width: 50%;
+  margin: 0 auto;
+  max-width: 350px;
+  position: sticky;
+}
+.row {
+  border: 1px dotted grey;
+}
+
+
+.row.content {
+  flex: 1 1 auto;
+}
+
+.footer {
+  flex: 0 1 40px;
+}

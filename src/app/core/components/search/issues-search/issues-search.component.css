@@ -3,6 +3,7 @@
   min-width: 450px;
   width: auto;
   display: inline-flex;
+  height: 12%;
 }
 
 .container {
@@ -12,4 +13,8 @@
 .bottom-sticker {
   position: absolute;
   bottom: 0;
+}
+
+.table-style{
+  height: 83%;
 }
