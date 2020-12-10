@@ -15,7 +15,7 @@ export class IssueMessagesService {
     return this.httpCaller.get<IssueMessageResponseDTO[]>('../../assets/mockResponses/IssueMessageResponseDTO_Mock.json');
   }
 
-  fetchStackTrace(uuid: string): Observable<IssueMessageResponseDTO> {
-    throw new Error('not implemented!');
+  fetchStackTrace(uuid: string): string {
+    return 'trolololo';
   }
 }

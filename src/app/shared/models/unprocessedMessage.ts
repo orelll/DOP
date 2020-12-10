@@ -1,5 +1,5 @@
 import { autoserializeAs } from 'cerializr';
-import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions/unprocessed-search-actions.component';
+import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
 import { Column, LogType } from '../decorators/columnDecorator';
 
 export class UnprocessedMessage {

@@ -14,17 +14,19 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
+import {MatDialogModule} from '@angular/material/dialog';
 
 import { AppComponent } from '../app.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { TableComponent } from '../shared/components/table/table.component';
 import { CellTypeChangerDirective } from '../shared/components/cell-type-changer.directive';
-import { UnprocessedSearchActionsComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions/unprocessed-search-actions.component';
-import { IssuesSearchActionsComponent } from './components/search/issues-search/issues-actions/issues-search-actions/issues-search-actions.component';
 import { HomeComponent } from './components/home/home.component';
 import { UnprocessedMessagesSearchComponent } from './components/search/unprocessed-messages-search/unprocessed-messages-search.component';
 import { IssuesSearchComponent } from './components/search/issues-search/issues-search.component';
+import { StackTraceThumbnailComponent } from './components/search/issues-search/stack-trace-thumbnail/stack-trace-thumbnail.component';
+import { IssuesSearchActionsComponent } from './components/search/issues-search/issues-actions/issues-search-actions.component';
+import { UnprocessedSearchActionsComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,7 @@ import { IssuesSearchComponent } from './components/search/issues-search/issues-
     CellTypeChangerDirective,
     UnprocessedSearchActionsComponent,
     IssuesSearchActionsComponent,
+    StackTraceThumbnailComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,7 +58,8 @@ import { IssuesSearchComponent } from './components/search/issues-search/issues-
     MatSelectModule,
     MatGridListModule,
     MatOptionModule,
-    MatInputModule
+    MatInputModule,
+    MatDialogModule
   ],
   exports: [
     AppComponent,
