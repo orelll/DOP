@@ -25,7 +25,7 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator.firstPage();
-      
+
       this._tableModel = this._data[0][tableSymbol];
       this.buildColumns();
       if (!this._originalData.length) {
@@ -71,6 +71,15 @@ export class TableComponent implements OnInit {
 
   renderComponent(columnKey: string): boolean {
     return columnKey.includes('Component');
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   private buildColumns(): void {

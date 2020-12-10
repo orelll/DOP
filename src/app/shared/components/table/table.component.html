@@ -1,5 +1,6 @@
 
-
+  <mat-label>Filter</mat-label>
+  <input matInput (keyup)="applyFilter($event)" placeholder="Ex. Mia" #input>
 <table mat-table [dataSource]="dataSource" matSort class="table">
   <ng-container [matColumnDef]="column.key" *ngFor="let column of columns">
     <!-- <ng-container *ngIf="column.canSort; else noSort">
