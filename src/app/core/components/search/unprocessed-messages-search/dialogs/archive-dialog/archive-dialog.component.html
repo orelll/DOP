@@ -1,0 +1,10 @@
+<h2 mat-dialog-title>Message archivisation</h2>
+<mat-dialog-content class="mat-typography">
+  <p>
+    Do you realy want to archive given message?
+  </p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button [mat-dialog-close]="false">No</button>
+  <button mat-raised-button color="primary" [mat-dialog-close]="true" cdkFocusInitial>Yes</button>
+</mat-dialog-actions>

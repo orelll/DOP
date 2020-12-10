@@ -2,15 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
 
 @Component({
-  selector: 'app-stack-trace-thumbnail',
-  templateUrl: './stack-trace-thumbnail.component.html',
-  styleUrls: ['./stack-trace-thumbnail.component.css'],
+  selector: 'app-yes-no-dialog',
+  templateUrl: './yes-no-dialog.component.html',
+  styleUrls: ['./yes-no-dialog.component.css'],
 })
-export class StackTraceThumbnailComponent implements OnInit {
+export class YesNoDialogComponent implements OnInit {
   constructor(private clipboard: DialogClipboardService) {}
 
   ngOnInit(): void {}
-
   getContent(): string {
     return this.clipboard.getClipboard();
   }

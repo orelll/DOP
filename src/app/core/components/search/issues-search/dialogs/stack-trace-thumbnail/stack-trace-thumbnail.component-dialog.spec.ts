@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { StackTraceThumbnailComponent } from './stack-trace-thumbnail.component';
+import { StackTraceThumbnailComponent } from './stack-trace-thumbnail-dialog.component';
 
 describe('StackTraceThumbnailComponent', () => {
   let component: StackTraceThumbnailComponent;

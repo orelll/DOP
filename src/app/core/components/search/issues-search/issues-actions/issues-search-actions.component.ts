@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
-import { StackTraceThumbnailComponent } from '../stack-trace-thumbnail/stack-trace-thumbnail.component';
+import { StackTraceThumbnailDialogComponent } from '../dialogs/stack-trace-thumbnail/stack-trace-thumbnail-dialog.component';
 
 @Component({
   selector: 'app-issues-search-actions',
@@ -22,7 +22,7 @@ export class IssuesSearchActionsComponent implements OnInit {
     var stackTrace = this.issuesService.fetchStackTrace(this.message.UUID);
     this.clipboard.setClipboard(stackTrace);
 
-    const dialogRef = this.dialog.open(StackTraceThumbnailComponent);
+    const dialogRef = this.dialog.open(StackTraceThumbnailDialogComponent);
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`);
     });

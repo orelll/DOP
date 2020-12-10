@@ -15,6 +15,7 @@ import {MatInputModule} from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 import { AppComponent } from '../app.component';
 import { RouterModule } from '@angular/router';
@@ -24,9 +25,14 @@ import { CellTypeChangerDirective } from '../shared/components/cell-type-changer
 import { HomeComponent } from './components/home/home.component';
 import { UnprocessedMessagesSearchComponent } from './components/search/unprocessed-messages-search/unprocessed-messages-search.component';
 import { IssuesSearchComponent } from './components/search/issues-search/issues-search.component';
-import { StackTraceThumbnailComponent } from './components/search/issues-search/stack-trace-thumbnail/stack-trace-thumbnail.component';
+import { StackTraceThumbnailDialogComponent } from './components/search/issues-search/dialogs/stack-trace-thumbnail/stack-trace-thumbnail-dialog.component';
 import { IssuesSearchActionsComponent } from './components/search/issues-search/issues-actions/issues-search-actions.component';
 import { UnprocessedSearchActionsComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
+import { YesNoDialogComponent } from '../shared/components/dialogs/yes-no/yes-no-dialog.component';
+import { RepublishDialogComponent } from './components/search/unprocessed-messages-search/dialogs/republish-dialog/republish-dialog.component';
+import { ArchiveDialogComponent } from './components/search/unprocessed-messages-search/dialogs/archive-dialog/archive-dialog.component';
+import { DeleteDialogComponent } from './components/search/unprocessed-messages-search/dialogs/delete-dialog/delete-dialog.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +44,11 @@ import { UnprocessedSearchActionsComponent } from './components/search/unprocess
     CellTypeChangerDirective,
     UnprocessedSearchActionsComponent,
     IssuesSearchActionsComponent,
-    StackTraceThumbnailComponent,
+    StackTraceThumbnailDialogComponent,
+    YesNoDialogComponent,
+    RepublishDialogComponent,
+    ArchiveDialogComponent,
+    DeleteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,7 +69,8 @@ import { UnprocessedSearchActionsComponent } from './components/search/unprocess
     MatGridListModule,
     MatOptionModule,
     MatInputModule,
-    MatDialogModule
+    MatDialogModule,
+    MatSnackBarModule
   ],
   exports: [
     AppComponent,
@@ -68,6 +79,8 @@ import { UnprocessedSearchActionsComponent } from './components/search/unprocess
     IssuesSearchComponent,
     TableComponent,
     CellTypeChangerDirective,
+    StackTraceThumbnailDialogComponent,
+    YesNoDialogComponent
   ],
 })
 export class CoreModule {}

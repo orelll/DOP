@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { YesNoDialogComponent } from 'src/app/shared/components/dialogs/yes-no/yes-no-dialog.component';
 import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
 import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
+import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
 
 @Component({
@@ -20,7 +23,9 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
     10
   );
 
-  constructor(private messagesService: UnprocessedMessagesService) {}
+  constructor(
+    private messagesService: UnprocessedMessagesService
+  ) {}
 
   ngOnInit(): void {
     this.tableSchema = new UnprocessedMessage()[tableSymbol];
@@ -45,18 +50,4 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
     });
   }
 
-  deleteMessage(messageId: number): void {
-    console.log('called deleteMessage');
-    this.messagesService.deleteMessage(messageId);
-  }
-
-  republishMessage(messageId: number): void {
-    console.log('called republishMessage');
-    this.messagesService.republishMessage(messageId);
-  }
-
-  archiveMessage(messageId: number): void {
-    console.log('called archiveMessage');
-    this.messagesService.archiveMessage(messageId);
-  }
 }
