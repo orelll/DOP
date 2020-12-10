@@ -1,12 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { YesNoDialogComponent } from 'src/app/shared/components/dialogs/yes-no/yes-no-dialog.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
-import { UnprocessedMessageResponseDTO } from 'src/app/shared/DTO/unprocessedMessageResponseDTO';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
-import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
 
 @Component({
@@ -17,22 +14,34 @@ import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-
 export class UnprocessedMessagesSearchComponent implements OnInit {
   resultsFound: UnprocessedMessage[] = [];
   tableSchema: TableModel;
+  searchForm: FormGroup;
 
-  searchCriteria: UnprocessedMessageSearchCriteria = new UnprocessedMessageSearchCriteria(
-    0,
-    10
-  );
+  page = 0;
+  pageSize = 10;
 
   constructor(
-    private messagesService: UnprocessedMessagesService
-  ) {}
+    private messagesService: UnprocessedMessagesService,
+    private fb: FormBuilder
+  ) {
+    this.prepareSearchForm();
+  }
+
+  prepareSearchForm(): void {
+    this.searchForm = this.fb.group({
+      publisher: [''],
+      company: [''],
+      subscriber: [''],
+      resource: [''],
+      httpCode: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.tableSchema = new UnprocessedMessage()[tableSymbol];
   }
 
-  search(): void {
-    this.messagesService.search(this.searchCriteria).subscribe((e) => {
+  search(searchCriteria: UnprocessedMessageSearchCriteria): void {
+    this.messagesService.search(searchCriteria).subscribe((e) => {
       this.resultsFound = e.map((DTO) => {
         const message = new UnprocessedMessage();
         message.publisher = DTO.publisher;
@@ -49,5 +58,37 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
       });
     });
   }
+  clearInput(propertyName: string): void {
+    switch (propertyName) {
+      case 'publisher':
+        this.searchForm.patchValue({ publisher: '' });
+        break;
+      case 'company':
+        this.searchForm.patchValue({ company: '' });
+        break;
+      case 'subscriber':
+        this.searchForm.patchValue({ subscriber: '' });
+        break;
+      case 'resource':
+        this.searchForm.patchValue({ resource: '' });
+        break;
+      case 'httpCode':
+        this.searchForm.patchValue({ httpCode: '' });
+        break;
+    }
+  }
 
+  onSubmit(): void {
+    const searchCriteria = new UnprocessedMessageSearchCriteria(
+      this.page,
+      this.pageSize,
+      this.searchForm.value['publisher'],
+      this.searchForm.value['company'],
+      this.searchForm.value['subscriber'],
+      this.searchForm.value['resource'],
+      this.searchForm.value['httpCode']
+    );
+    console.log(`Calling search with values: ${JSON.stringify(searchCriteria)}`);
+    this.search(searchCriteria);
+  }
 }

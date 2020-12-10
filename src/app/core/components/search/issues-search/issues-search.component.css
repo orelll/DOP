@@ -5,16 +5,6 @@
   display: inline-flex;
 }
 
-.one-control {
-  flex-direction: row;
-  display: inline-flex;
-}
-.box {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
 .container {
   position: relative;
 }
@@ -22,15 +12,4 @@
 .bottom-sticker {
   position: absolute;
   bottom: 0;
-}
-
-input {
-  height: 25px;
-  border-radius: 3px;
-  border-width: 1px;
-}
-
-textarea {
-  border-radius: 3px;
-  border-width: 1px;
 }

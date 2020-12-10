@@ -1,9 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
-import { Sort, SortDirection } from '@angular/material/sort';
+import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/columnDecorator';
+import { MatTableDataSource } from '@angular/material/table';
+import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-table',
@@ -18,6 +20,12 @@ export class TableComponent implements OnInit {
   @Input() set data(values: any[]) {
     if (values && values.length > 0) {
       this._data = cloneDeep(values);
+
+      this.dataSource = new MatTableDataSource(this._data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator.firstPage();
+      
       this._tableModel = this._data[0][tableSymbol];
       this.buildColumns();
       if (!this._originalData.length) {
@@ -38,10 +46,21 @@ export class TableComponent implements OnInit {
   }
   columns: ColumnModel[];
   displayedColumns: string[];
+  dataSource = new MatTableDataSource;
 
-  constructor() {}
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
+  constructor() {
+    this.dataSource = new MatTableDataSource();
+  }
 
   ngOnInit(): void {}
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
 
   sortData(params: Sort): void {
     const direction: SortDirection = params.direction;
@@ -49,8 +68,6 @@ export class TableComponent implements OnInit {
       ? orderBy(this.data, [params.active], [direction])
       : this._originalData;
   }
-
-  ngAfterView(): void {}
 
   renderComponent(columnKey: string): boolean {
     return columnKey.includes('Component');

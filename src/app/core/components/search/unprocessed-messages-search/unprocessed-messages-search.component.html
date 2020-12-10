@@ -1,2 +1,56 @@
-<button (click)='search()'>Search</button>
-<app-table [data]="resultsFound"  [dataSchema]="tableSchema"></app-table>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
+  <div class="box">
+    <div>
+      <label for='publisher'>Publisher</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="publisher" id="publisher" placeholder="publisher is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('publisher')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label for='company'>Company</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="company" id="company" placeholder="company is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('company')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label for='subscriber'>Subscriber</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="subscriber" id="subscriber" placeholder="subscriber is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('subscriber')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label for='resource'>Resource</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="resource" id="resource" placeholder="resource is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('resource')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div>
+      <label for='httpCode'>HTTP Code</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="httpCode" id="httpCode" placeholder="httpCode is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('httpCode')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+    <button type="submit" mat-raised-button color="primary" class="bottom-sticker">Search</button>
+  </div>>
+</form>
+<app-table [data]="resultsFound" [dataSchema]="tableSchema"></app-table>

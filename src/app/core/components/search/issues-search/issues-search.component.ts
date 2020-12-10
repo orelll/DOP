@@ -30,16 +30,6 @@ export class IssuesSearchComponent implements OnInit {
     this.prepareSearchForm();
     this.tableSchema = new IssueMessage()[tableSymbol];
   }
-  // profileForm = this.fb.group({
-  //   firstName: [''],
-  //   lastName: [''],
-  //   address: this.fb.group({
-  //     street: [''],
-  //     city: [''],
-  //     state: [''],
-  //     zip: ['']
-  //   }),
-
   prepareSearchForm(): void {
     this.searchForm = this.fb.group({
       startDate: [''],

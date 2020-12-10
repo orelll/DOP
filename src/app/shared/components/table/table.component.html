@@ -1,6 +1,6 @@
 
 
-<table mat-table [dataSource]="data" matSort class="table">
+<table mat-table [dataSource]="dataSource" matSort class="table">
   <ng-container [matColumnDef]="column.key" *ngFor="let column of columns">
     <!-- <ng-container *ngIf="column.canSort; else noSort">
       <th mat-header-cell *matHeaderCellDef mat-sort-header="{{ column.name }}">
@@ -26,3 +26,4 @@
   <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 </table>
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" class="sticky-paginator"></mat-paginator>

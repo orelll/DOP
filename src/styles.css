@@ -1,4 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+input {
+  height: 25px;
+  border-radius: 3px;
+  border-width: 1px;
+}
+
+textarea {
+  border-radius: 3px;
+  border-width: 1px;
+}
+.one-control {
+  flex-direction: row;
+  display: inline-flex;
+}
+.box {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
