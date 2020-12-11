@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { YesNoDialogComponent } from 'src/app/shared/components/dialogs/yes-no/yes-no-dialog.component';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';

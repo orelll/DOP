@@ -30,6 +30,7 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('DOP app is running!');
+    const elemToCheck = compiled.querySelector('span');
+    expect(elemToCheck.textContent).toContain('DOP Searcher');
   });
 });

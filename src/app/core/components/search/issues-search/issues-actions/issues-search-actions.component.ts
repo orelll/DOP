@@ -19,7 +19,7 @@ export class IssuesSearchActionsComponent implements OnInit {
 
   fetchStackTrace(): void {
     console.log(`Called for ${this.message.UUID}`);
-    var stackTrace = this.issuesService.fetchStackTrace(this.message.UUID);
+    const stackTrace = this.issuesService.fetchStackTrace(this.message.UUID);
     this.clipboard.setClipboard(stackTrace);
 
     const dialogRef = this.dialog.open(StackTraceThumbnailDialogComponent);

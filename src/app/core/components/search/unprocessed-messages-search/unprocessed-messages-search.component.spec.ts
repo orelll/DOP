@@ -1,4 +1,8 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormBuilder, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpService } from 'src/app/core/services/http-service';
+import { UnprocessedMessagesService } from 'src/app/shared/services';
 
 import { UnprocessedMessagesSearchComponent } from './unprocessed-messages-search.component';
 
@@ -8,9 +12,15 @@ describe('UnprocessedMessagesSearchComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnprocessedMessagesSearchComponent ]
-    })
-    .compileComponents();
+      declarations: [UnprocessedMessagesSearchComponent],
+      imports: [FormsModule, ReactiveFormsModule, HttpClientModule],
+      providers: [
+        UnprocessedMessagesService,
+        FormBuilder,
+        HttpService,
+        HttpClient,
+      ],
+    }).compileComponents();
   });
 
   beforeEach(() => {
