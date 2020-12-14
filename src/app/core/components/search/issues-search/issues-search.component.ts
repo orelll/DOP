@@ -30,6 +30,7 @@ export class IssuesSearchComponent implements OnInit {
     this.prepareSearchForm();
     this.tableSchema = new IssueMessage()[tableSymbol];
   }
+
   prepareSearchForm(): void {
     this.searchForm = this.fb.group({
       startDate: [''],
@@ -37,11 +38,13 @@ export class IssuesSearchComponent implements OnInit {
       UUID: [''],
       message: [''],
       exception: [''],
+      page: [''],
+      pageSize: ['']
     });
   }
 
-  search(): void {
-    this.messagesService.search(this.searchCriteria).subscribe((e) => {
+  search(searchData: IssueMessageSearchCriteria): void {
+    this.messagesService.search(searchData).subscribe((e) => {
       this.resultsFound = e.map((DTO) => {
         const message = new IssueMessage();
         message.UUID = DTO.UUID;
@@ -75,5 +78,16 @@ export class IssuesSearchComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.searchForm.value);
+    const searchCriteria = new IssueMessageSearchCriteria(
+      this.searchForm.value.page,
+      this.searchForm.value.pageSize,
+      this.searchForm.value.startDate,
+      this.searchForm.value.endDate,
+      this.searchForm.value.UUID,
+      this.searchForm.value.message,
+      this.searchForm.value.exception
+    );
+
+    this.search(searchCriteria);
   }
 }

@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { RandomsGenerator } from '../tests-helpers/random-genrators';
+import { RandomsGenerator } from '../tests-helpers/random-generators';
 import { UnprocessedMessageSearchCriteria } from './unprosessedMessageSearchCriteria';
 
 describe('UnprocessedMessageSearchCriteria', () => {
