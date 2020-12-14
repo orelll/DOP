@@ -10,7 +10,6 @@ import { from, Observable, of } from 'rxjs';
 
 import { IssuesSearchComponent } from './issues-search.component';
 import { IssueMessageResponseDTO } from 'src/app/shared/DTO/issueMessageResponseDTO';
-import { timestamp } from 'rxjs/internal/operators';
 
 describe('IssuesSearchComponent', () => {
   let component: IssuesSearchComponent;

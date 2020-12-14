@@ -82,8 +82,8 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
 
   onSubmit(): void {
     const searchCriteria = new UnprocessedMessageSearchCriteria(
-      this.page,
-      this.pageSize,
+      this.searchForm.value.page,
+      this.searchForm.value.pageSize,
       this.searchForm.value.publisher,
       this.searchForm.value.company,
       this.searchForm.value.subscriber,
