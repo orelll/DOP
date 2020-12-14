@@ -39,6 +39,6 @@ export class CellTypeChangerDirective implements OnInit {
       componentFactory
     );
 
-    entry[1](this.cellRowData, this.cellType, componentRef);
+    entry[1](this.cellRowData, componentRef);
   }
 }

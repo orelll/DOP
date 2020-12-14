@@ -1,5 +1,4 @@
 export class ColumnModel {
-  
   key: string;
   order: number;
   propertyType: any;

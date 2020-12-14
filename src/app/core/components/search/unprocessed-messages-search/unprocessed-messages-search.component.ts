@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
+import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
@@ -82,11 +82,11 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
     const searchCriteria = new UnprocessedMessageSearchCriteria(
       this.page,
       this.pageSize,
-      this.searchForm.value['publisher'],
-      this.searchForm.value['company'],
-      this.searchForm.value['subscriber'],
-      this.searchForm.value['resource'],
-      this.searchForm.value['httpCode']
+      this.searchForm.value.publisher,
+      this.searchForm.value.company,
+      this.searchForm.value.subscriber,
+      this.searchForm.value.resource,
+      this.searchForm.value.httpCode
     );
     console.log(`Calling search with values: ${JSON.stringify(searchCriteria)}`);
     this.search(searchCriteria);

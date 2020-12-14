@@ -1,6 +1,6 @@
 import { autoserializeAs } from 'cerializr';
 import { IssuesSearchActionsComponent } from 'src/app/core/components/search/issues-search/issues-actions/issues-search-actions.component';
-import { Column, LogType } from '../decorators/columnDecorator';
+import { Column, LogType } from '../decorators/column-decorator';
 
 export class IssueMessage {
   @autoserializeAs(String)

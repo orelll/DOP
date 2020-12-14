@@ -10,7 +10,6 @@ export class TypesMappingService {
   private postCreationActions: {
     [id: string]: (
       cellRowData: any,
-      cellType: string,
       componentRef: ComponentRef<any>
     ) => void;
   } = {};
@@ -26,7 +25,6 @@ export class TypesMappingService {
     any,
     (
       cellRowData: any,
-      cellType: string,
       componentRef: ComponentRef<any>
     ) => void
   ] {
@@ -55,7 +53,6 @@ export class TypesMappingService {
     entry: any,
     func: (
       cellRowData: any,
-      cellType: string,
       componentRef: ComponentRef<any>
     ) => void
   ): void {
@@ -70,7 +67,6 @@ export class TypesMappingService {
 
   private handleIssuesSearchActionsComponentCration(
     cellRowData: any,
-    cellType: string,
     componentRef: ComponentRef<any>
   ): void {
     const component = componentRef.instance as IssuesSearchActionsComponent;
@@ -81,7 +77,6 @@ export class TypesMappingService {
 
   private handleUnprocessedSearchActionsComponentCration(
     cellRowData: any,
-    cellType: string,
     componentRef: ComponentRef<any>
   ): void {
     const component = componentRef.instance as UnprocessedSearchActionsComponent;

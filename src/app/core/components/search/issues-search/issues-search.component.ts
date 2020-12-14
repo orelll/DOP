@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
-import { tableSymbol } from 'src/app/shared/decorators/columnDecorator';
+import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
 import { TableModel } from 'src/app/shared/models/tableModel';

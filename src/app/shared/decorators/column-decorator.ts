@@ -4,7 +4,9 @@ import { TableModel } from '../models/tableModel';
 
 export const tableSymbol = Symbol('column');
 
-export function Column(options: Partial<ColumnModel> = {}) {
+export function Column(
+  options: Partial<ColumnModel> = {}
+): (target: any, propertyKey: string) => void {
   return (target: any, propertyKey: string) => {
     console.log('decorator column for', propertyKey);
     if (!target[tableSymbol]) {
@@ -19,7 +21,7 @@ export function Column(options: Partial<ColumnModel> = {}) {
 }
 
 export function LogType(type: any): (target: any, propertyKey: string) => void {
-  return function (target: any, propertyKey: string): void {
+  return (target: any, propertyKey: string) => {
     Reflect.defineMetadata('design:type', type, target, propertyKey);
   };
 }

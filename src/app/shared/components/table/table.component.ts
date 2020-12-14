@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
-import { MatSort, MatSortModule, Sort, SortDirection } from '@angular/material/sort';
+import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
 import { TableModel } from '../../models/tableModel';
-import { tableSymbol } from '../../decorators/columnDecorator';
+import { tableSymbol } from '../../decorators/column-decorator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 
