@@ -22,5 +22,7 @@ export class UnprocessedMessageSearchCriteria {
     this.subscriber = subscriber === undefined ? null : subscriber;
     this.resource = resource === undefined ? '' : resource;
     this.httpCode = httpCode === undefined ? null : httpCode;
+    this.page = page === undefined ? null : page;
+    this.pageSize = pageSize === undefined ? null : pageSize;
   }
 }
