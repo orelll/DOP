@@ -3,10 +3,12 @@
 
   <span class="example-spacer"></span>
 
-  <button mat-flat-button color="primary" routerLink='/issues-messages-search'>Issues</button>
-  <a mat-flat-button color="primary" routerLink='/unprocessed-messages-search'>Unprocessed</a>
+  <button mat-flat-button color="primary" routerLink='/issues-messages-search' (click)="setCurrentPageName('issues')" [ngClass]="{'active': pageName === 'issues'}">Issues</button>
+  <button mat-flat-button color="primary" routerLink='/unprocessed-messages-search' (click)="setCurrentPageName('unprocessed')" [ngClass]="{'active': pageName === 'unprocessed'}">Unprocessed</button>
 
   <span class="example-spacer"></span>
 </mat-toolbar>
+
+
 
 <router-outlet></router-outlet>

@@ -17,6 +17,9 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import {MatDialogModule} from '@angular/material/dialog';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatListModule} from '@angular/material/list';
+import {MatMenuModule} from '@angular/material/menu';
 
 import { AppComponent } from '../app.component';
 import { RouterModule } from '@angular/router';
@@ -58,6 +61,7 @@ import { MatSortModule } from '@angular/material/sort';
     FormsModule,
     ReactiveFormsModule,
     CommonModule,
+    MatListModule,
     MatFormFieldModule,
     MatIconModule,
     MatNativeDateModule,
@@ -74,7 +78,9 @@ import { MatSortModule } from '@angular/material/sort';
     MatDialogModule,
     MatSnackBarModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatProgressSpinnerModule,
+    MatMenuModule
   ],
   exports: [
     AppComponent,

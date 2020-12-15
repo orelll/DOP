@@ -15,6 +15,7 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   resultsFound: UnprocessedMessage[] = [];
   tableSchema: TableModel;
   searchForm: FormGroup;
+  busy = false;
 
   page = 0;
   pageSize = 10;
@@ -43,6 +44,8 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   }
 
   search(searchCriteria: UnprocessedMessageSearchCriteria): void {
+    this.busy = true;
+
     this.messagesService.search(searchCriteria).subscribe((e) => {
       this.resultsFound = e.map((DTO) => {
         const message = new UnprocessedMessage();
@@ -58,7 +61,9 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
         message.id = DTO.id;
         return message;
       });
+      this.busy = false;
     });
+
   }
   clearInput(propertyName: string): void {
     switch (propertyName) {
@@ -95,5 +100,4 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
     );
     this.search(searchCriteria);
   }
-
 }
