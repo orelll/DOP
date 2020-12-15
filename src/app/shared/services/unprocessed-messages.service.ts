@@ -17,14 +17,14 @@ export class UnprocessedMessagesService {
   }
 
   republishMessage(id: number): void {
-    throw new Error('not implemented!');
+    // throw new Error('not implemented!');
   }
 
   deleteMessage(id: number): void {
-    throw new Error('not implemented!');
+    // throw new Error('not implemented!');
   }
 
   archiveMessage(id: number): void {
-    throw new Error('not implemented!');
+    // throw new Error('not implemented!');
   }
 }

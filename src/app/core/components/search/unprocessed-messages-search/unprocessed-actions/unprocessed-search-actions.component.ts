@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
@@ -17,6 +18,7 @@ export class UnprocessedSearchActionsComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private snackBar: MatSnackBar,
     private clipboard: DialogClipboardService,
     private messagesService: UnprocessedMessagesService
   ) {}
@@ -34,6 +36,9 @@ export class UnprocessedSearchActionsComponent implements OnInit {
       if (result == true) {
         console.log(`archiving message with Id: ${this.message.id}`);
         this.messagesService.republishMessage(this.message.id);
+        this.snackBar.open('Message republished', 'ok', {
+          duration: 2000,
+        });
       }
     });
   }
@@ -49,6 +54,9 @@ export class UnprocessedSearchActionsComponent implements OnInit {
       if (result == true) {
         console.log(`archiving message with Id: ${this.message.id}`);
         this.messagesService.archiveMessage(this.message.id);
+        this.snackBar.open('Message archived', 'ok', {
+          duration: 2000,
+        });
       }
     });
   }
@@ -64,6 +72,9 @@ export class UnprocessedSearchActionsComponent implements OnInit {
       if (result == true) {
         console.log(`deleting message with Id: ${this.message.id}`);
         this.messagesService.deleteMessage(this.message.id);
+        this.snackBar.open('Message deleted', 'ok', {
+          duration: 2000,
+        });
       }
     });
   }

@@ -33,8 +33,8 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
       subscriber: [''],
       resource: [''],
       httpCode: [''],
-      page: [''],
-      pageSize: [''],
+      page: ['1'],
+      pageSize: ['10'],
     });
   }
 

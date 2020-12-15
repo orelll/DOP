@@ -32,7 +32,9 @@ textarea {
   display: flex;
   flex-flow: wrap;
 }
-
+a:active {
+  color: pink;
+}
 .search-button {
   display: inline-flex;
   flex-flow: wrap;
