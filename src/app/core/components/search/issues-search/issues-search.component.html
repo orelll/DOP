@@ -1,28 +1,29 @@
 <div class="wrapper">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
     <!-- <div class="search-wrapper"> -->
-      <div>
-        <mat-label for='UUID'>UUID</mat-label>
+    <div class="search-box-item">
+      <mat-label for='UUID'>UUID</mat-label>
 
-        <div class="one-control">
-          <input matInput type="text" formControlName="UUID" id="UUID" placeholder="UUID is..." class="search-input">
-          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('UUID')">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
+      <div class="one-control">
+        <input matInput type="text" formControlName="UUID" id="UUID" placeholder="UUID is..." class="search-input">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('UUID')">
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
+    </div>
 
-      <div>
-        <mat-label>Message</mat-label>
+    <div class="search-box-item">
+      <mat-label>Message</mat-label>
 
-        <div class="one-control">
-          <input matInput type="text" formControlName="message" id="message" placeholder="message is...">
-          <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('message')">
-            <mat-icon>close</mat-icon>
-          </button>
-        </div>
+      <div class="one-control">
+        <input matInput type="text" formControlName="message" id="message" placeholder="message is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('message')">
+          <mat-icon>close</mat-icon>
+        </button>
       </div>
+    </div>
 
+    <div class="search-box-item">
       <mat-label for='exception' class="search-label">Exception</mat-label>
 
       <div class="one-control">
@@ -31,42 +32,43 @@
           <mat-icon>close</mat-icon>
         </button>
       </div>
+    </div>
 
-      <div>
-        <mat-label>Start Date:</mat-label>
+    <div class="search-box-item">
+      <mat-label>Start Date:</mat-label>
 
-        <div class="one-control">
-          <input matInput [matDatepicker]="startPicker" formControlName="startDate" id="startDate"
-            placeholder="start date  is...">
-          <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-          <mat-datepicker #startPicker></mat-datepicker>
-        </div>
+      <div class="one-control">
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate" id="startDate"
+          placeholder="start date  is...">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
       </div>
-      <div>
-        <mat-label>End Date:</mat-label>
+    </div>
 
-        <div class="one-control">
-          <input matInput [matDatepicker]="endPicker" formControlName="endDate" id="endDate"
-            placeholder="end date is...">
-          <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-          <mat-datepicker #endPicker></mat-datepicker>
-        </div>
+    <div class="search-box-item">
+      <mat-label>End Date:</mat-label>
+
+      <div class="one-control">
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate" id="endDate" placeholder="end date is...">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
       </div>
+    </div>
 
-      <div>
-        <mat-label>Start Page:</mat-label>
+    <div class="search-box-item">
+      <mat-label>Start Page:</mat-label>
 
-        <div class="one-control">
-          <input matInput type="number" formControlName="page" id="page" placeholder="start page  is...">
-        </div>
+      <div class="one-control">
+        <input matInput type="number" formControlName="page" id="page" placeholder="start page  is...">
       </div>
-      <div>
-        <mat-label>Page Size:</mat-label>
+    </div>
+    <div class="search-box-item">
+      <mat-label>Page Size:</mat-label>
 
-        <div class="one-control">
-          <input matInput type="number" formControlName="pageSize" id="pageSize" placeholder="Page size is...">
-        </div>
+      <div class="one-control">
+        <input matInput type="number" formControlName="pageSize" id="pageSize" placeholder="Page size is...">
       </div>
+    </div>
     <!-- </div> -->
 
     <div class="search-button">

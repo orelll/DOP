@@ -34,7 +34,7 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
       resource: [''],
       httpCode: [''],
       page: [''],
-      pageSize: ['']
+      pageSize: [''],
     });
   }
 
@@ -90,7 +90,10 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
       this.searchForm.value.resource,
       this.searchForm.value.httpCode
     );
-    console.log(`Calling search with values: ${JSON.stringify(searchCriteria)}`);
+    console.log(
+      `Calling search with values: ${JSON.stringify(searchCriteria)}`
+    );
     this.search(searchCriteria);
   }
+
 }

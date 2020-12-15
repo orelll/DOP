@@ -1,5 +1,11 @@
-<span>
-    <button mat-raised-button color="primary" (click)="republishMessage()">Resend</button>
-    <button mat-raised-button (click)="archiveMessage()">Archive</button>
-    <button mat-raised-button color="warn" (click)="deleteMessage()">Delete</button>
-</span>
+<div class="buttons-holder">
+  <button mat-icon-button color="primary" (click)="republishMessage()" class="action-button" title="Republish message">
+    <mat-icon>autorenew</mat-icon>
+  </button>
+  <button mat-icon-button (click)="archiveMessage()" class="action-button"  title="Archive message">
+    <mat-icon>archive</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="deleteMessage()" class="action-button"  title="Delete message">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>

@@ -39,7 +39,7 @@ export class IssuesSearchComponent implements OnInit {
       message: [''],
       exception: [''],
       page: ['1'],
-      pageSize: ['10']
+      pageSize: ['10'],
     });
   }
 
@@ -76,6 +76,10 @@ export class IssuesSearchComponent implements OnInit {
     }
   }
 
+  externalSearchCall(event: any): void {
+    this.onSubmit();
+  }
+  
   onSubmit(): void {
     console.log(this.searchForm.value);
     const searchCriteria = new IssueMessageSearchCriteria(

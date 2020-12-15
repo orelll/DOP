@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
@@ -6,6 +6,7 @@ import { TableModel } from '../../models/tableModel';
 import { tableSymbol } from '../../decorators/column-decorator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { EventEmitter } from 'events';
 
 @Component({
   selector: 'app-table',
@@ -13,6 +14,8 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./table.component.css'],
 })
 export class TableComponent implements OnInit {
+  @Output() searchEvent: EventEmitter;
+
   private _data = [];
   private _originalData: any[] = [];
   private _tableModel: TableModel;
@@ -44,6 +47,7 @@ export class TableComponent implements OnInit {
       this.buildColumns();
     }
   }
+
   columns: ColumnModel[];
   displayedColumns: string[];
   dataSource = new MatTableDataSource();
@@ -55,7 +59,9 @@ export class TableComponent implements OnInit {
     this.dataSource = new MatTableDataSource();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchEvent = new EventEmitter();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
@@ -80,6 +86,10 @@ export class TableComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  doSearch() {
+    this.searchEvent.emit(null);
   }
 
   private buildColumns(): void {

@@ -7,6 +7,10 @@
   height: 40px;
 }
 
+.search-bar{
+  display: inline-flex;
+}
+
 .box {
   text-align: center;
   color: white;

@@ -1,0 +1,15 @@
+.buttons-holder{
+    display: flex;
+    flex-direction: row;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.action-button{
+    min-height: 25px;
+    max-height: 30px;
+    height: auto;
+    min-width: 25px;
+    max-width: 30px;
+    width: auto;
+}
