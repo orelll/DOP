@@ -38,8 +38,8 @@ export class IssuesSearchComponent implements OnInit {
       UUID: [''],
       message: [''],
       exception: [''],
-      page: [''],
-      pageSize: ['']
+      page: ['1'],
+      pageSize: ['10']
     });
   }
 

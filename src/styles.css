@@ -21,11 +21,38 @@ textarea {
 }
 .one-control {
   flex-direction: row;
-  display: inline-flex;
-}
-.box {
   display: flex;
-  flex-wrap: wrap;
-  flex-flow: column;
-  height: 100%;
+}
+
+.search-form {
+  min-width: 600px;
+  margin-left: auto;
+  margin-right: 5px;
+  display: flex;
+  flex-flow: wrap;
+}
+
+.search-button{
+  display: inline-flex;
+  flex-flow: wrap;
+  float: right;
+  align-items: flex-end;
+}
+
+.search-input {
+  height: auto;
+}
+
+.search-wrapper{
+  display: inline-flex;
+  flex-flow: wrap;
+  float: right;
+  align-items: flex-start;
+}
+
+.wrapper {
+  overflow: auto;
+  margin: 5px;
+  padding: 5px;
+  min-height: 15%;
 }
