@@ -1,23 +1,19 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { HttpService } from 'src/app/core/services/http-service';
 import { UnprocessedMessageResponseDTO } from '../DTO/unprocessedMessageResponseDTO';
+import { UnprocessedMessageSearchCriteria } from '../models/unprosessedMessageSearchCriteria';
 
 @Injectable({
   providedIn: 'root',
 })
 export class UnprocessedMessagesService {
-  constructor() {}
+  constructor(private httpCaller: HttpService) {}
 
   search(
-    page: number,
-    pageSize: number,
-    publisher?: number,
-    company?: string,
-    subscriber?: number,
-    resource?: string,
-    httpCode?: string
+   searchCriteria: UnprocessedMessageSearchCriteria
   ): Observable<UnprocessedMessageResponseDTO[]> {
-    throw new Error('not implemented!');
+    return this.httpCaller.get<UnprocessedMessageResponseDTO[]>('../../assets/mockResponses/UnprocessedMessageResponseDTO_mock.json');
   }
 
   republishMessage(id: number): void {

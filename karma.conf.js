@@ -27,9 +27,12 @@ module.exports = function (config) {
     coverageReporter: {
       dir: require('path').join(__dirname, './coverage/DOP'),
       subdir: '.',
-      reporters: [
-        { type: 'html' },
-        { type: 'text-summary' }
+      reporters: [{
+          type: 'html'
+        },
+        {
+          type: 'text-summary'
+        }
       ]
     },
     reporters: ['progress', 'kjhtml'],
@@ -37,7 +40,9 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Chrome'],
+    browsers: [
+      'Chrome'
+    ],
     singleRun: false,
     restartOnFileChange: true
   });

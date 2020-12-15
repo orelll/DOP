@@ -1,10 +1,80 @@
-<p>issues-search works!</p>
-<button (click)='search()'>Search</button>
-<!-- <ul>
-    <li *ngFor='let message of resultsFound'>
-        <app-issue-message-thumbnail  [message]='message'
-        (fetchStackTraceEvent)='fetchStackTrace($event)'
-        ></app-issue-message-thumbnail>
-    </li>
-</ul> -->
-<app-table [data]="resultsFound"></app-table>
+<form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
+
+  <div class="box">
+    <div>
+      <label for='UUID'>UUID</label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="UUID" id="UUID" placeholder="UUID is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('UUID')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div>
+      <mat-label>Message</mat-label>
+
+      <div class="one-control">
+        <input matInput type="text" formControlName="message" id="message" placeholder="message is...">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('message')">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div>
+    <label for='exception'>Exception</label>
+
+    <div class="one-control">
+      <textarea matInput formControlName="exception" id="exception"></textarea>
+      <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('exception')">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <div class="box">
+    <div>
+      <mat-label>Start Date:</mat-label>
+
+      <div class="one-control">
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate" id="startDate"
+          placeholder="start date  is...">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </div>
+    </div>
+    <div>
+      <mat-label>End Date:</mat-label>
+
+      <div class="one-control">
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate" id="endDate" placeholder="end date is...">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </div>
+    </div>
+    <div>
+      <mat-label>Start Page:</mat-label>
+
+      <div class="one-control">
+        <input matInput type="number" formControlName="page" id="page"
+          placeholder="start page  is...">
+      </div>
+    </div>
+    <div>
+      <mat-label>Page Size:</mat-label>
+
+      <div class="one-control">
+        <input matInput type="number" formControlName="pageSize" id="pageSize" placeholder="Page size is...">
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="container">
+    <button type="submit" mat-raised-button color="primary" class="bottom-sticker" (click)="onSubmit()">Search</button>
+  </div>
+</form>
+<app-table [data]="resultsFound" [dataSchema]="tableSchema" class="table-style"></app-table>

@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
-import { switchMap } from 'rxjs/internal/operators';
-import { map } from 'rxjs/internal/operators/map';
-import { HttpService } from 'src/app/core/services/http-service';
-import { IssueMessageResponseDTO } from 'src/app/shared/DTO/issueMessageResponseDTO';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
+import { TableModel } from 'src/app/shared/models/tableModel';
 import { IssueMessagesService } from 'src/app/shared/services/issue-messages.service';
 
 @Component({
@@ -20,41 +18,76 @@ export class IssuesSearchComponent implements OnInit {
   );
 
   resultsFound: IssueMessage[];
+  tableSchema: TableModel;
+  searchForm: FormGroup;
 
-  constructor(private messagesService: IssueMessagesService) {}
+  constructor(
+    private messagesService: IssueMessagesService,
+    private fb: FormBuilder
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.prepareSearchForm();
+    this.tableSchema = new IssueMessage()[tableSymbol];
+  }
 
-  search(): void {
-    this.messagesService
-      .search(this.searchCriteria).subscribe(e => {
-        this.resultsFound = e.map(z => 
-          {
-            var xx = new IssueMessage();
-            xx.UUID = z.UUID;
-            xx.level = z.level;
-            xx.message = z.message;
-            xx.microServiceName =z.microServiceName;
-            xx.timeStamp = z.timeStamp;
-            return xx;
-          })
+  prepareSearchForm(): void {
+    this.searchForm = this.fb.group({
+      startDate: [''],
+      endDate: [''],
+      UUID: [''],
+      message: [''],
+      exception: [''],
+      page: [''],
+      pageSize: ['']
+    });
+  }
+
+  search(searchData: IssueMessageSearchCriteria): void {
+    this.messagesService.search(searchData).subscribe((e) => {
+      this.resultsFound = e.map((DTO) => {
+        const message = new IssueMessage();
+        message.UUID = DTO.UUID;
+        message.level = DTO.level;
+        message.message = DTO.message;
+        message.microServiceName = DTO.microServiceName;
+        message.timeStamp = DTO.timeStamp;
+        return message;
       });
-      // .pipe(
-      // map(searchData => searchData.map(z => new IssueMessage()))
-      
-      //   )
-
-      //   switchMap(searchData => new Observable<IssueMessage[]>(searchData.map(y => new IssueMessage())))
-      // );
-    // this.messagesService.search(this.searchCriteria).subscribe((results) => {
-    //   console.log(`gathered ${results.length} elements during search`);
-    //   this.resultsFound = results;
-    // });
+    });
   }
 
   fetchStackTrace(uuid: string): void {
     console.log('called fetchStackTrace');
     const stackTrace = this.messagesService.fetchStackTrace(uuid);
     alert(stackTrace);
+  }
+
+  clearInput(propertyName: string): void {
+    switch (propertyName) {
+      case 'UUID':
+        this.searchForm.patchValue({ UUID: '' });
+        break;
+      case 'message':
+        this.searchForm.patchValue({ message: '' });
+        break;
+      case 'exception':
+        this.searchForm.patchValue({ exception: '' });
+    }
+  }
+
+  onSubmit(): void {
+    console.log(this.searchForm.value);
+    const searchCriteria = new IssueMessageSearchCriteria(
+      this.searchForm.value.page,
+      this.searchForm.value.pageSize,
+      this.searchForm.value.startDate,
+      this.searchForm.value.endDate,
+      this.searchForm.value.UUID,
+      this.searchForm.value.message,
+      this.searchForm.value.exception
+    );
+
+    this.search(searchCriteria);
   }
 }
