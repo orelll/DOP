@@ -1,76 +1,80 @@
 <div class="wrapper">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
 
+    <!-- Publisher -->
     <div class="search-box-item">
-      <mat-label for='publisher'>Publisher</mat-label>
-
-      <div class="one-control">
-        <input matInput type="text" formControlName="publisher" id="publisher" placeholder="publisher is..."
-          class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('publisher')">
+      <mat-form-field>
+        <mat-label>Publisher</mat-label>
+        <input matInput type="text" formControlName="publisher" id="publisher">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['publisher'].value"
+          (click)="clearInput('publisher')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label for='company'>Company</mat-label>
 
-      <div class="one-control">
-        <input matInput type="text" formControlName="company" id="company" placeholder="company is..."
-          class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('company')">
+    <!-- Company -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>Company</mat-label>
+        <input matInput type="text" formControlName="company" id="company">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['company'].value"
+          (click)="clearInput('company')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label for='subscriber'>Subscriber</mat-label>
 
-      <div class="one-control">
-        <input matInput type="text" formControlName="subscriber" id="subscriber" placeholder="subscriber is..."
-          class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('subscriber')">
+    <!-- Subscriber -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>Subscriber</mat-label>
+        <input matInput type="text" formControlName="subscriber" id="subscriber">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['subscriber'].value"
+          (click)="clearInput('subscriber')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label for='resource'>Resource</mat-label>
 
-      <div class="one-control">
-        <input matInput type="text" formControlName="resource" id="resource" placeholder="resource is..."
-          class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('resource')">
+    <!-- Resource -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>Resource</mat-label>
+        <input matInput type="text" formControlName="resource" id="resource">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['resource'].value"
+          (click)="clearInput('resource')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label for='httpCode'>HTTP Code</mat-label>
 
-      <div class="one-control">
-        <input matInput type="text" formControlName="httpCode" id="httpCode" placeholder="httpCode is..."
-          class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('httpCode')">
+    <!-- HTTP Code -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>HTTP Code</mat-label>
+        <input matInput type="text" formControlName="httpCode" id="httpCode">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['httpCode'].value"
+          (click)="clearInput('httpCode')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label>Start Page:</mat-label>
 
-      <div class="one-control">
-        <input matInput type="number" formControlName="page" id="page" placeholder="start page  is..."
-          class="search-input">
-      </div>
+    <!-- Start Page -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>Start Page</mat-label>
+        <input matInput type="number" formControlName="page" id="page">
+      </mat-form-field>
     </div>
-    <div class="search-box-item">
-      <mat-label>Page Size:</mat-label>
 
-      <div class="one-control">
-        <input matInput type="number" formControlName="pageSize" id="pageSize" placeholder="Page size is..."
-          class="search-input">
-      </div>
+    <!-- Page Size -->
+    <div class="search-box-item">
+      <mat-form-field>
+        <mat-label>Page Size</mat-label>
+        <input matInput type="number" formControlName="pageSize" id="pageSize">
+      </mat-form-field>
     </div>
     <div class="search-button">
       <button type="submit" mat-raised-button color="primary" [ngClass]="{'disabled':busy}">Search</button>

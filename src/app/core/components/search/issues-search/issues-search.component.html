@@ -1,78 +1,80 @@
 <div class="wrapper">
   <form [formGroup]="searchForm" (ngSubmit)="onSubmit()" class="search-form">
-    <!-- <div class="search-wrapper"> -->
+    <!-- UUID -->
     <div class="search-box-item">
-      <mat-label for='UUID'>UUID</mat-label>
-
-      <div class="one-control">
-        <input matInput type="text" formControlName="UUID" id="UUID" placeholder="UUID is..." class="search-input">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('UUID')">
+      <mat-form-field>
+        <mat-label>UUID</mat-label>
+        <input matInput type="text" formControlName="UUID" id="UUID">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['UUID'].value"
+          (click)="clearInput('UUID')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
 
+    <!-- Message -->
     <div class="search-box-item">
-      <mat-label>Message</mat-label>
-
-      <div class="one-control">
-        <input matInput type="text" formControlName="message" id="message" placeholder="message is...">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('message')">
+      <mat-form-field>
+        <mat-label>Message</mat-label>
+        <input matInput type="text" formControlName="message" id="message">
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['message'].value"
+          (click)="clearInput('message')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
 
+    <!-- Exception -->
     <div class="search-box-item">
-      <mat-label for='exception' class="search-label">Exception</mat-label>
-
-      <div class="one-control">
-        <textarea matInput formControlName="exception" id="exception"></textarea>
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" (click)="clearInput('exception')">
+      <mat-form-field>
+        <mat-label>Exception</mat-label>
+        <textarea matInput type="text" formControlName="exception" id="exception"></textarea>
+        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['exception'].value"
+          (click)="clearInput('exception')">
           <mat-icon>close</mat-icon>
         </button>
-      </div>
+      </mat-form-field>
     </div>
 
+    <!-- Start Date -->
     <div class="search-box-item">
-      <mat-label>Start Date:</mat-label>
-
-      <div class="one-control">
-        <input matInput [matDatepicker]="startPicker" formControlName="startDate" id="startDate"
-          placeholder="start date  is...">
+      <mat-form-field>
+        <mat-label>Start Date</mat-label>
+        <input matInput [matDatepicker]="startPicker" formControlName="startDate" id="startDate">
         <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
         <mat-datepicker #startPicker></mat-datepicker>
-      </div>
+      </mat-form-field>
     </div>
 
+    <!-- End Date -->
     <div class="search-box-item">
-      <mat-label>End Date:</mat-label>
-
-      <div class="one-control">
-        <input matInput [matDatepicker]="endPicker" formControlName="endDate" id="endDate" placeholder="end date is...">
+      <mat-form-field>
+        <mat-label>End Date</mat-label>
+        <input matInput [matDatepicker]="endPicker" formControlName="endDate" id="endDate">
         <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
         <mat-datepicker #endPicker></mat-datepicker>
-      </div>
+      </mat-form-field>
     </div>
 
+    <!-- Start Page -->
     <div class="search-box-item">
-      <mat-label>Start Page:</mat-label>
-
-      <div class="one-control">
-        <input matInput type="number" formControlName="page" id="page" placeholder="start page  is...">
-      </div>
+      <mat-form-field>
+        <mat-label>Start Page</mat-label>
+        <input matInput type="number" formControlName="page" id="page">
+      </mat-form-field>
     </div>
+
+    <!-- Page Size -->
     <div class="search-box-item">
-      <mat-label>Page Size:</mat-label>
-
-      <div class="one-control">
-        <input matInput type="number" formControlName="pageSize" id="pageSize" placeholder="Page size is...">
-      </div>
+      <mat-form-field>
+        <mat-label>Page Size</mat-label>
+        <input matInput type="number" formControlName="pageSize" id="pageSize">
+      </mat-form-field>
     </div>
-    <!-- </div> -->
 
     <div class="search-button">
-      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()" [ngClass]="{'disabled':busy}">Search</button>
+      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()"
+        [ngClass]="{'disabled':busy}">Search</button>
     </div>
   </form>
 </div>
