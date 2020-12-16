@@ -1,4 +1,4 @@
-<div class="component-wrapper">
+<div class="component-wrapper" [ngClass]="{'disabled':spinnerService.isBusy}">
   <div class="search-bar">
     <div class="filter-bar">
       <mat-label>Filter</mat-label>

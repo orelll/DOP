@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ArchiveDialogComponent } from '../dialogs/archive-dialog/archive-dialog.component';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 import { RepublishDialogComponent } from '../dialogs/republish-dialog/republish-dialog.component';
@@ -17,6 +18,7 @@ export class UnprocessedSearchActionsComponent implements OnInit {
   message: UnprocessedMessage;
 
   constructor(
+    public spinnerService: SpinnerService,
     public dialog: MatDialog,
     private snackBar: MatSnackBar,
     private clipboard: DialogClipboardService,
@@ -34,8 +36,10 @@ export class UnprocessedSearchActionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       if (result == true) {
+        this.spinnerService.setBusy(true);
         console.log(`archiving message with Id: ${this.message.id}`);
         this.messagesService.republishMessage(this.message.id);
+        this.spinnerService.setBusy(false);
         this.snackBar.open('Message republished', 'ok', {
           duration: 2000,
         });
@@ -52,8 +56,10 @@ export class UnprocessedSearchActionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       if (result == true) {
+        this.spinnerService.setBusy(true);
         console.log(`archiving message with Id: ${this.message.id}`);
         this.messagesService.archiveMessage(this.message.id);
+        this.spinnerService.setBusy(false);
         this.snackBar.open('Message archived', 'ok', {
           duration: 2000,
         });
@@ -70,8 +76,10 @@ export class UnprocessedSearchActionsComponent implements OnInit {
     dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
       if (result == true) {
+        this.spinnerService.setBusy(true);
         console.log(`deleting message with Id: ${this.message.id}`);
         this.messagesService.deleteMessage(this.message.id);
+        this.spinnerService.setBusy(false);
         this.snackBar.open('Message deleted', 'ok', {
           duration: 2000,
         });

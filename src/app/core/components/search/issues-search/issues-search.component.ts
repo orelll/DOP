@@ -5,6 +5,7 @@ import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { IssueMessagesService } from 'src/app/shared/services/issue-messages.service';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 
 @Component({
   selector: 'app-issues-search',
@@ -20,12 +21,13 @@ export class IssuesSearchComponent implements OnInit {
   resultsFound: IssueMessage[];
   tableSchema: TableModel;
   searchForm: FormGroup;
-  busy = false;
 
   constructor(
     private messagesService: IssueMessagesService,
+    public spinnerService: SpinnerService,
     private fb: FormBuilder
-  ) {}
+  ) {
+  }
 
   ngOnInit(): void {
     this.prepareSearchForm();
@@ -45,7 +47,7 @@ export class IssuesSearchComponent implements OnInit {
   }
 
   search(searchData: IssueMessageSearchCriteria): void {
-    this.busy = true;
+    this.spinnerService.setBusy(true);
     this.messagesService.search(searchData).subscribe((e) => {
       this.resultsFound = e.map((DTO) => {
         const message = new IssueMessage();
@@ -56,7 +58,7 @@ export class IssuesSearchComponent implements OnInit {
         message.timeStamp = DTO.timeStamp;
         return message;
       });
-      this.busy = false;
+      this.spinnerService.setBusy(false);
     });
   }
 

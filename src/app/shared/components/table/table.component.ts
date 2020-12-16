@@ -7,6 +7,7 @@ import { tableSymbol } from '../../decorators/column-decorator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { EventEmitter } from 'events';
+import { SpinnerService } from '../../services/spinner-service/spinner.service';
 
 @Component({
   selector: 'app-table',
@@ -55,7 +56,7 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor() {
+  constructor(public spinnerService: SpinnerService,) {
     this.dataSource = new MatTableDataSource();
   }
 

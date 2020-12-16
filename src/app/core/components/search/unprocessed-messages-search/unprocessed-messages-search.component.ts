@@ -4,6 +4,7 @@ import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
+import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
 
 @Component({
@@ -15,11 +16,10 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   resultsFound: UnprocessedMessage[] = [];
   tableSchema: TableModel;
   searchForm: FormGroup;
-  busy = false;
-
 
   constructor(
     private messagesService: UnprocessedMessagesService,
+    public spinnerService: SpinnerService,
     private fb: FormBuilder
   ) {
     this.prepareSearchForm();
@@ -42,7 +42,7 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   }
 
   search(searchCriteria: UnprocessedMessageSearchCriteria): void {
-    this.busy = true;
+    this.spinnerService.setBusy(true);
 
     this.messagesService.search(searchCriteria).subscribe((e) => {
       this.resultsFound = e.map((DTO) => {
@@ -59,7 +59,8 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
         message.id = DTO.id;
         return message;
       });
-      this.busy = false;
+      this.spinnerService.setBusy(false);
+      
     });
 
   }

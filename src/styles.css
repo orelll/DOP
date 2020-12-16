@@ -67,6 +67,5 @@ textarea {
   pointer-events: none;
   /* for "disabled" effect */
   opacity: 0.3;
-  background: #ccc;
 }
 
