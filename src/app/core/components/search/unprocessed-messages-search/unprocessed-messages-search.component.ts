@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
+import { ErrorsGroup } from 'src/app/shared/models/errorsGroup';
 import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
@@ -16,6 +17,10 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   resultsFound: UnprocessedMessage[] = [];
   tableSchema: TableModel;
   searchForm: FormGroup;
+  httpErrorCodes: ErrorsGroup[] = [
+   ErrorsGroup.get4xxGroup(),
+   ErrorsGroup.get5xxGroup()
+  ];
 
   constructor(
     private messagesService: UnprocessedMessagesService,
@@ -60,9 +65,7 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
         return message;
       });
       this.spinnerService.setBusy(false);
-      
     });
-
   }
   clearInput(propertyName: string): void {
     switch (propertyName) {

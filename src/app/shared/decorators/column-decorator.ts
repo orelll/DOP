@@ -12,6 +12,7 @@ export function Column(
     if (!target[tableSymbol]) {
       target[tableSymbol] = new TableModel();
     }
+    
     options.key = options.key || propertyKey;
     const propType = Reflect.getMetadata('design:type', target, propertyKey);
     options.propertyType = propType?.name ? propType.name : 'String';

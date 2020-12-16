@@ -1,8 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
 html,
-body {
+body,
+app-root {
   height: 100%;
+}
+app-root {
+  display: list-item;
 }
 body {
   margin: 0;
@@ -54,6 +58,7 @@ textarea {
 .search-box-item {
   padding: 10px 2px 10px 2px;
   margin: 5px;
+  height: 80px;
 }
 
 .wrapper {
@@ -69,3 +74,16 @@ textarea {
   opacity: 0.7;
 }
 
+.mat-form-field {
+  height: 100%;
+}
+
+.mat-form-field-wrapper {
+  height: 60%;
+}
+
+.table-class {
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}

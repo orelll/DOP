@@ -53,11 +53,14 @@
     <div class="search-box-item">
       <mat-form-field>
         <mat-label>HTTP Code</mat-label>
-        <input matInput type="text" formControlName="httpCode" id="httpCode">
-        <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['httpCode'].value"
-          (click)="clearInput('httpCode')">
-          <mat-icon>close</mat-icon>
-        </button>
+        <mat-select formControlName="httpCode" name="httpCode">
+          <option value="">None</option>
+          <mat-optgroup *ngFor="let errorsGroup of httpErrorCodes" [label]="errorsGroup.name">
+            <mat-option *ngFor="let error of errorsGroup.errors" [value]="error">
+              {{error}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
       </mat-form-field>
     </div>
 
@@ -72,15 +75,16 @@
     <!-- Page Size -->
     <div class="search-box-item">
       <mat-form-field>
+
         <mat-label>Page Size</mat-label>
         <input matInput type="number" formControlName="pageSize" id="pageSize">
+
       </mat-form-field>
     </div>
     <div class="search-button">
-      <button type="submit" mat-raised-button color="primary" [ngClass]="{'disabled':spinnerService.isBusy}">Search</button>
+      <button type="submit" mat-raised-button color="primary"
+        [ngClass]="{'disabled':spinnerService.isBusy}">Search</button>
     </div>
-
-
   </form>
 </div>
 <app-table [data]="resultsFound" [dataSchema]="tableSchema" [ngClass]="{'disabled':spinnerService.isBusy}"></app-table>

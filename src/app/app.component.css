@@ -1,11 +1,15 @@
 .example-spacer {
-    flex: 1 1 auto;
-  }
-.header{
-  height: 8%;
+  flex: 1 1 auto;
+}
+.header {
   max-height: 55px;
 }
 
-.active{
+.active {
   color: hotpink;
+}
+
+.flat-router {
+  height: 0px;
+  display: block;
 }
