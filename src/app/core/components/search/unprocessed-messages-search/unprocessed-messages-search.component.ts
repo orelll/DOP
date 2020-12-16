@@ -17,8 +17,6 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   searchForm: FormGroup;
   busy = false;
 
-  page = 0;
-  pageSize = 10;
 
   constructor(
     private messagesService: UnprocessedMessagesService,

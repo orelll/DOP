@@ -72,9 +72,10 @@
     <!-- </div> -->
 
     <div class="search-button">
-      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()">Search</button>
+      <button type="submit" mat-raised-button color="primary" (click)="onSubmit()" [ngClass]="{'disabled':busy}">Search</button>
     </div>
   </form>
 </div>
 
-<app-table [data]="resultsFound" [dataSchema]="tableSchema" class="table-style"></app-table>
+<app-table [data]="resultsFound" [dataSchema]="tableSchema" [ngClass]="{'disabled':busy}"></app-table>
+<mat-spinner color="accent" class="spinner-style" *ngIf="busy"></mat-spinner>

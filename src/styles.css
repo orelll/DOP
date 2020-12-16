@@ -62,3 +62,11 @@ textarea {
   padding: 5px;
   min-height: 15%;
 }
+
+.disabled {
+  pointer-events: none;
+  /* for "disabled" effect */
+  opacity: 0.3;
+  background: #ccc;
+}
+

@@ -1,18 +1,12 @@
-.disabled
-{
-  pointer-events: none;
-  /* for "disabled" effect */
-  opacity: 0.3;
-  background: #CCC;
-}
-
-.spinner-style{
-  width: 100px;
-  margin-left: 50%;
-  margin-right: 50%;  
-  position: absolute;
-  top: 50%;
-  height: 100px;
-  margin-top: -50px;
-  z-index:99999;
-}
+.spinner-style {
+          width: 100px;
+          height: 100px;
+          margin-left: 50%;
+          margin-right: 50%;
+          position: absolute;
+          top: 50%;
+          -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+          z-index: 99999;
+        }
+        

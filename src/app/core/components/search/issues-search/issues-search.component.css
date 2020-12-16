@@ -1,4 +1,11 @@
-
-mat-label{
+.spinner-style {
   width: 100px;
+  height: 100px;
+  margin-left: 50%;
+  margin-right: 50%;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  z-index: 99999;
 }
