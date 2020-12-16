@@ -81,6 +81,6 @@
     </form>
   </div>
 
-  <app-table [data]="resultsFound" [dataSchema]="tableSchema" class="table-class" [ngClass]="{'disabled':spinnerService.isBusy}">
+  <app-table [data]="resultsFound" [dataSchema]="tableSchema" [ngClass]="{'disabled':spinnerService.isBusy}">
   </app-table>
   <mat-spinner color="accent" class="spinner-style" *ngIf="spinnerService.isBusy"></mat-spinner>

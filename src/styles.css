@@ -5,9 +5,6 @@ body,
 app-root {
   height: 100%;
 }
-app-root {
-  display: list-item;
-}
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
@@ -42,6 +39,8 @@ textarea {
   flex-flow: wrap;
   float: right;
   align-items: flex-end;
+  align-content: center;
+  margin-bottom: 20px;
 }
 
 .search-input {

@@ -23,16 +23,16 @@
 
 .table{
   width: 100%;
-  position: relative;
   max-height: 400px;
-  overflow: auto;
 }
 
 .component-wrapper {
 	height: 74%;
   min-height: 74%;
 	display: flex;
-	flex-direction: column;
+  flex-direction: column;
+  padding: 10px;
+  margin: 5px;
 }
 
 .content-wrapper{
@@ -54,3 +54,8 @@
   align-self: flex-end;
 }
 
+.th-left{
+  text-align: left;
+  padding: 5px;
+  margin: 5px;
+}

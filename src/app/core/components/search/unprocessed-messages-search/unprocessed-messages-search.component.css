@@ -11,6 +11,5 @@
 }
 
 :host(app-unprocessed-messages-search) {
-  height: calc(100% - 55px);
-  display: inline-block;
+  height: calc(100% - 60px);
 }
