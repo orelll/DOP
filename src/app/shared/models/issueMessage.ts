@@ -4,32 +4,26 @@ import { Column, LogType } from '../decorators/column-decorator';
 import { ActionsComponentsEnum } from './actions-components-enum';
 
 export class IssueMessage {
-  @autoserializeAs(String)
   @Column({ order: 1, name: 'Microservice Name', canSort: true })
   @LogType(String)
   microServiceName: string;
 
-  @autoserializeAs(String)
   @Column({ order: 2 })
   @LogType(String)
   UUID: string;
 
-  @autoserializeAs(Date)
   @Column({ order: 5, name: 'Time Stamp', canSort: true })
   @LogType(Date)
   timeStamp: Date;
 
-  @autoserializeAs(String)
   @Column({ order: 3, name: 'Level' })
   @LogType(String)
   level: string;
 
-  @autoserializeAs(String)
   @Column({ order: 4, name: 'Message' })
   @LogType(String)
   message: string;
 
-  @autoserializeAs(String)
   @Column({ order: 6, name: 'Actions' })
   @LogType(ActionsComponentsEnum.IssuesSearchActionsComponent)
   actions: ActionsComponentsEnum.IssuesSearchActionsComponent;
