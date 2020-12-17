@@ -76,8 +76,8 @@ export class TableComponent implements OnInit {
       : this._originalData;
   }
 
-  renderComponent(columnKey: string): boolean {
-    return columnKey.includes('Component');
+  renderComponent(propertyType: string, columnKey: string): boolean {
+    return propertyType.includes('Component');
   }
 
   applyFilter(event: Event) {

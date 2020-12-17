@@ -1,6 +1,6 @@
 import { autoserializeAs } from 'cerializr';
-import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
 import { Column, LogType } from '../decorators/column-decorator';
+import { ActionsComponentsEnum } from './actions-components-enum';
 
 export class UnprocessedMessage {
   @autoserializeAs(String)
@@ -53,8 +53,8 @@ export class UnprocessedMessage {
   @LogType(Number)
   public id: number;
 
-  @autoserializeAs(UnprocessedSearchActionsComponent)
+  @autoserializeAs(String)
   @Column({ name: 'Actions' })
-  @LogType(UnprocessedSearchActionsComponent)
-  public actions: UnprocessedSearchActionsComponent;
+  @LogType(ActionsComponentsEnum.UnprocessedSearchActionsComponent)
+  public actions: ActionsComponentsEnum.UnprocessedSearchActionsComponent ;
 }

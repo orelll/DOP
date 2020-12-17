@@ -1,6 +1,7 @@
 import { autoserializeAs } from 'cerializr';
 import { IssuesSearchActionsComponent } from 'src/app/core/components/search/issues-search/issues-actions/issues-search-actions.component';
 import { Column, LogType } from '../decorators/column-decorator';
+import { ActionsComponentsEnum } from './actions-components-enum';
 
 export class IssueMessage {
   @autoserializeAs(String)
@@ -28,8 +29,8 @@ export class IssueMessage {
   @LogType(String)
   message: string;
 
-  @autoserializeAs(IssuesSearchActionsComponent)
+  @autoserializeAs(String)
   @Column({ order: 6, name: 'Actions' })
-  @LogType(IssuesSearchActionsComponent)
-  actions: IssuesSearchActionsComponent;
+  @LogType(ActionsComponentsEnum.IssuesSearchActionsComponent)
+  actions: ActionsComponentsEnum.IssuesSearchActionsComponent;
 }
