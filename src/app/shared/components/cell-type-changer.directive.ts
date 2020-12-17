@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewContainerRef,
 } from '@angular/core';
-import { TypesMappingService } from '../services/typesMapping/types-mapping.service';
+import { TypesMappingService } from '../services/types-mapping/types-mapping.service';
 
 @Directive({
   selector: '[appCellTypeChanger]',

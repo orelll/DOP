@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { delay } from 'rxjs/internal/operators';
 import { HttpService } from 'src/app/core/services/http-service';
-import { IssueMessageResponseDTO } from '../DTO/issueMessageResponseDTO';
-import { IssueMessageSearchCriteria } from '../models/issueMessageSearchCriteria';
-import { RandomsGenerator } from '../tests-helpers/random-generators';
+import { IssueMessageResponseDTO } from 'src/app/shared/dto/issueMessageResponseDTO';
+import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
+import { RandomsGenerator } from 'src/app/shared/tests-helpers/random-generators';
+
 @Injectable({
   providedIn: 'root',
 })

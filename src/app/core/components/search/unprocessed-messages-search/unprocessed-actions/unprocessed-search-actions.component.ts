@@ -2,12 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
-import { UnprocessedMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { ArchiveDialogComponent } from '../dialogs/archive-dialog/archive-dialog.component';
 import { DeleteDialogComponent } from '../dialogs/delete-dialog/delete-dialog.component';
 import { RepublishDialogComponent } from '../dialogs/republish-dialog/republish-dialog.component';
+import { UnprocessedMessagesService } from './unprocessed-messages.service';
 
 @Component({
   selector: 'app-unprocessed-search-actions',

@@ -10,6 +10,11 @@
   z-index: 99999;
 }
 
+.none-option{
+  margin-left: 30px;
+  margin-top: 10px;
+}
+
 :host(app-unprocessed-messages-search) {
   height: calc(100% - 60px);
 }

@@ -7,7 +7,7 @@
         <mat-label>Publisher</mat-label>
         <input matInput type="text" formControlName="publisher" id="publisher">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['publisher'].value"
-          (click)="clearInput('publisher')">
+          (click)="clearInput(controlName.publisher)">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -19,7 +19,7 @@
         <mat-label>Company</mat-label>
         <input matInput type="text" formControlName="company" id="company">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['company'].value"
-          (click)="clearInput('company')">
+          (click)="clearInput(controlName.company)">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -31,7 +31,7 @@
         <mat-label>Subscriber</mat-label>
         <input matInput type="text" formControlName="subscriber" id="subscriber">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['subscriber'].value"
-          (click)="clearInput('subscriber')">
+          (click)="clearInput(controlName.subscriber)">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -43,7 +43,7 @@
         <mat-label>Resource</mat-label>
         <input matInput type="text" formControlName="resource" id="resource">
         <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['resource'].value"
-          (click)="clearInput('resource')">
+          (click)="clearInput(controlName.resource)">
           <mat-icon>close</mat-icon>
         </button>
       </mat-form-field>
@@ -54,8 +54,8 @@
       <mat-form-field>
         <mat-label>HTTP Code</mat-label>
         <mat-select formControlName="httpCode" name="httpCode">
-          <option value="">None</option>
-          <mat-optgroup *ngFor="let errorsGroup of httpErrorCodes" [label]="errorsGroup.name">
+          <option class="none-option">--NONE--</option>
+          <mat-optgroup *ngFor="let errorsGroup of httpErrorCodes" [label]="errorsGroup.name" >
             <mat-option *ngFor="let error of errorsGroup.errors" [value]="error">
               {{error}}
             </mat-option>

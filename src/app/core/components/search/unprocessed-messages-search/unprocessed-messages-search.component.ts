@@ -6,7 +6,7 @@ import { TableModel } from 'src/app/shared/models/tableModel';
 import { UnprocessedMessage } from 'src/app/shared/models/unprocessedMessage';
 import { UnprocessedMessageSearchCriteria } from 'src/app/shared/models/unprosessedMessageSearchCriteria';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
-import { UnprocessedMessagesService } from 'src/app/shared/services/unprocessed-messages.service';
+import { UnprocessedMessagesService } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-messages.service';
 
 @Component({
   selector: 'app-unprocessed-messages-search',
@@ -17,9 +17,11 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
   resultsFound: UnprocessedMessage[] = [];
   tableSchema: TableModel;
   searchForm: FormGroup;
+  controlName: typeof ControlNameEnum = ControlNameEnum;
+
   httpErrorCodes: ErrorsGroup[] = [
-   ErrorsGroup.get4xxGroup(),
-   ErrorsGroup.get5xxGroup()
+    ErrorsGroup.get4xxGroup(),
+    ErrorsGroup.get5xxGroup(),
   ];
 
   constructor(
@@ -67,22 +69,28 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
       this.spinnerService.setBusy(false);
     });
   }
-  clearInput(propertyName: string): void {
-    switch (propertyName) {
-      case 'publisher':
+  clearInput(controlName: ControlNameEnum): void {
+    switch (controlName) {
+      case ControlNameEnum.publisher:
         this.searchForm.patchValue({ publisher: '' });
         break;
-      case 'company':
+      case ControlNameEnum.company:
         this.searchForm.patchValue({ company: '' });
         break;
-      case 'subscriber':
-        this.searchForm.patchValue({ subscriber: '' });
+      case ControlNameEnum.subscriber:
+        this.searchForm.patchValue({ subscribe: '' });
         break;
-      case 'resource':
+      case ControlNameEnum.resource:
         this.searchForm.patchValue({ resource: '' });
         break;
-      case 'httpCode':
+      case ControlNameEnum.httpCode:
         this.searchForm.patchValue({ httpCode: '' });
+        break;
+      case ControlNameEnum.page:
+        this.searchForm.patchValue({ page: '' });
+        break;
+      case ControlNameEnum.pageSize:
+        this.searchForm.patchValue({ pageSize: '' });
         break;
     }
   }
@@ -102,4 +110,14 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
     );
     this.search(searchCriteria);
   }
+}
+
+enum ControlNameEnum {
+  publisher,
+  company,
+  subscriber,
+  resource,
+  httpCode,
+  page,
+  pageSize,
 }

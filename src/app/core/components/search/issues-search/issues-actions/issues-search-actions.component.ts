@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
-import { IssueMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 import { StackTraceThumbnailDialogComponent } from '../dialogs/stack-trace-thumbnail/stack-trace-thumbnail-dialog.component';
+import { IssueMessagesService } from './issue-messages.service';
 
 @Component({
   selector: 'app-issues-search-actions',
@@ -14,10 +14,12 @@ import { StackTraceThumbnailDialogComponent } from '../dialogs/stack-trace-thumb
 export class IssuesSearchActionsComponent implements OnInit {
   message: IssueMessage;
 
-  constructor(private issuesService: IssueMessagesService,
+  constructor(
+    private issuesService: IssueMessagesService,
     public spinnerService: SpinnerService,
     public dialog: MatDialog,
-    private clipboard: DialogClipboardService) {}
+    private clipboard: DialogClipboardService
+  ) {}
 
   ngOnInit(): void {}
 
@@ -29,7 +31,7 @@ export class IssuesSearchActionsComponent implements OnInit {
 
     this.spinnerService.setBusy(false);
     const dialogRef = this.dialog.open(StackTraceThumbnailDialogComponent);
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.afterClosed().subscribe((result) => {
       console.log(`Dialog result: ${result}`);
     });
   }

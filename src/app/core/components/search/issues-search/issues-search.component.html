@@ -8,7 +8,7 @@
           <mat-label>UUID</mat-label>
           <input matInput type="text" formControlName="UUID" id="UUID">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['UUID'].value"
-            (click)="clearInput('UUID')">
+            (click)="clearInput(controlName.UUID)">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
@@ -20,7 +20,7 @@
           <mat-label>Message</mat-label>
           <input matInput type="text" formControlName="message" id="message">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['message'].value"
-            (click)="clearInput('message')">
+            (click)="clearInput(controlName.message)">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
@@ -30,9 +30,9 @@
       <div class="search-box-item">
         <mat-form-field>
           <mat-label>Exception</mat-label>
-          <textarea matInput type="text" formControlName="exception" id="exception"></textarea>
+          <input matInput type="text" formControlName="exception" id="exception">
           <button mat-button matSuffix mat-icon-button aria-label="Clear" *ngIf="searchForm.controls['exception'].value"
-            (click)="clearInput('exception')">
+            (click)="clearInput(controlName.exception)">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>

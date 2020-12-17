@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { tableSymbol } from 'src/app/shared/decorators/column-decorator';
 import { IssueMessage } from 'src/app/shared/models/issueMessage';
 import { IssueMessageSearchCriteria } from 'src/app/shared/models/issueMessageSearchCriteria';
 import { TableModel } from 'src/app/shared/models/tableModel';
-import { IssueMessagesService } from 'src/app/shared/services/issue-messages.service';
+import { IssueMessagesService } from 'src/app/core/components/search/issues-search/issues-actions/issue-messages.service';
 import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.service';
 
 @Component({
@@ -13,21 +13,17 @@ import { SpinnerService } from 'src/app/shared/services/spinner-service/spinner.
   styleUrls: ['./issues-search.component.css'],
 })
 export class IssuesSearchComponent implements OnInit {
-  searchCriteria: IssueMessageSearchCriteria = new IssueMessageSearchCriteria(
-    0,
-    10
-  );
-
+  searchCriteria: IssueMessageSearchCriteria;
   resultsFound: IssueMessage[];
   tableSchema: TableModel;
   searchForm: FormGroup;
+  controlName: typeof ControlNameEnum = ControlNameEnum;
 
   constructor(
     private messagesService: IssueMessagesService,
     public spinnerService: SpinnerService,
     private fb: FormBuilder
-  ) {
-  }
+  ) {}
 
   ngOnInit(): void {
     this.prepareSearchForm();
@@ -68,23 +64,36 @@ export class IssuesSearchComponent implements OnInit {
     alert(stackTrace);
   }
 
-  clearInput(propertyName: string): void {
+  clearInput(propertyName: ControlNameEnum): void {
     switch (propertyName) {
-      case 'UUID':
+      case ControlNameEnum.page:
+        this.searchForm.patchValue({ page: '' });
+        break;
+      case ControlNameEnum.pageSize:
+        this.searchForm.patchValue({ pageSize: '' });
+        break;
+      case ControlNameEnum.startDate:
+        this.searchForm.patchValue({ startDate: '' });
+        break;
+      case ControlNameEnum.endDate:
+        this.searchForm.patchValue({ endDate: '' });
+        break;
+      case ControlNameEnum.UUID:
         this.searchForm.patchValue({ UUID: '' });
         break;
-      case 'message':
+      case ControlNameEnum.message:
         this.searchForm.patchValue({ message: '' });
         break;
-      case 'exception':
-        this.searchForm.patchValue({ exception: '' });
+      case ControlNameEnum.exception:
+        this.searchForm.patchValue({ message: '' });
+        break;
     }
   }
 
   externalSearchCall(event: any): void {
     this.onSubmit();
   }
-  
+
   onSubmit(): void {
     console.log(this.searchForm.value);
     const searchCriteria = new IssueMessageSearchCriteria(
@@ -99,4 +108,14 @@ export class IssuesSearchComponent implements OnInit {
 
     this.search(searchCriteria);
   }
+}
+
+enum ControlNameEnum {
+  page,
+  pageSize,
+  startDate,
+  endDate,
+  UUID,
+  message,
+  exception,
 }
