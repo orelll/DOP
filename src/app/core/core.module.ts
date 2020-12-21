@@ -11,15 +11,16 @@ import { MatTableModule } from '@angular/material/table';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import {MatListModule} from '@angular/material/list';
-import {MatMenuModule} from '@angular/material/menu';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from '../app.component';
 import { RouterModule } from '@angular/router';
@@ -31,13 +32,15 @@ import { UnprocessedMessagesSearchComponent } from './components/search/unproces
 import { IssuesSearchComponent } from './components/search/issues-search/issues-search.component';
 import { StackTraceThumbnailDialogComponent } from './components/search/issues-search/dialogs/stack-trace-thumbnail/stack-trace-thumbnail-dialog.component';
 import { IssuesSearchActionsComponent } from './components/search/issues-search/issues-actions/issues-search-actions.component';
-import { UnprocessedSearchActionsComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
+import { UnprocessedSearchActionsComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions/unprocessed-search-actions.component';
 import { YesNoDialogComponent } from '../shared/components/dialogs/yes-no/yes-no-dialog.component';
 import { RepublishDialogComponent } from './components/search/unprocessed-messages-search/dialogs/republish-dialog/republish-dialog.component';
 import { ArchiveDialogComponent } from './components/search/unprocessed-messages-search/dialogs/archive-dialog/archive-dialog.component';
 import { DeleteDialogComponent } from './components/search/unprocessed-messages-search/dialogs/delete-dialog/delete-dialog.component';
 import { MatSortModule } from '@angular/material/sort';
-
+import { ActionBarSelectorDirective } from '../shared/directives/action-bar-selector.directive';
+import { CommonActionBarComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/common-action-bar/common-action-bar.component';
+import { UnprocessedActionCheckComponent } from './components/search/unprocessed-messages-search/unprocessed-actions/check-component/unprocessed-action-check.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +50,7 @@ import { MatSortModule } from '@angular/material/sort';
     IssuesSearchComponent,
     TableComponent,
     CellTypeChangerDirective,
+    ActionBarSelectorDirective,
     UnprocessedSearchActionsComponent,
     IssuesSearchActionsComponent,
     StackTraceThumbnailDialogComponent,
@@ -54,6 +58,8 @@ import { MatSortModule } from '@angular/material/sort';
     RepublishDialogComponent,
     ArchiveDialogComponent,
     DeleteDialogComponent,
+    CommonActionBarComponent,
+    UnprocessedActionCheckComponent,
   ],
   imports: [
     BrowserModule,
@@ -80,7 +86,8 @@ import { MatSortModule } from '@angular/material/sort';
     MatPaginatorModule,
     MatSortModule,
     MatProgressSpinnerModule,
-    MatMenuModule
+    MatMenuModule,
+    MatCheckboxModule,
   ],
   exports: [
     AppComponent,
@@ -89,8 +96,11 @@ import { MatSortModule } from '@angular/material/sort';
     IssuesSearchComponent,
     TableComponent,
     CellTypeChangerDirective,
+    ActionBarSelectorDirective,
     StackTraceThumbnailDialogComponent,
-    YesNoDialogComponent
+    YesNoDialogComponent,
+    CommonActionBarComponent,
+    UnprocessedActionCheckComponent,
   ],
 })
 export class CoreModule {}

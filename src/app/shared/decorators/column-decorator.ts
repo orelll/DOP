@@ -1,4 +1,3 @@
-import { getSyntheticPropertyName } from '@angular/compiler/src/render3/util';
 import 'reflect-metadata';
 import { ColumnModel } from '../models/columnModel';
 import { TableModel } from '../models/tableModel';

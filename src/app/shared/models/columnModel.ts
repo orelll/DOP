@@ -7,7 +7,7 @@ export class ColumnModel {
 
   constructor(options: Partial<ColumnModel> = {}) {
     this.key = options.key;
-    this.order = options.order || 0;
+    this.order = options.order || 999;
     this.propertyType = options.propertyType;
     this.canSort = options.canSort || false;
     this.name = options.name || options.key;

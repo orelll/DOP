@@ -2,6 +2,10 @@ import { Column, LogType } from '../decorators/column-decorator';
 import { ActionsComponentsEnum } from './actions-components-enum';
 
 export class UnprocessedMessage {
+  @Column({order: 1, name: ' '})
+  @LogType(ActionsComponentsEnum.UnprocessedMessagesCheckComponent)
+  public checked: boolean;
+
   @Column({ name: 'Publisher' })
   @LogType(String)
   public publisher: string;
@@ -44,5 +48,5 @@ export class UnprocessedMessage {
 
   @Column({ name: 'Actions' })
   @LogType(ActionsComponentsEnum.UnprocessedSearchActionsComponent)
-  public actions: ActionsComponentsEnum.UnprocessedSearchActionsComponent ;
+  public actions: ActionsComponentsEnum.UnprocessedSearchActionsComponent;
 }

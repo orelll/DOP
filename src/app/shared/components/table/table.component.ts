@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild, Output } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { sortBy, orderBy, cloneDeep } from 'lodash';
 import { MatSort, Sort, SortDirection } from '@angular/material/sort';
 import { ColumnModel } from '../../models/columnModel';
@@ -14,7 +14,7 @@ import { SpinnerService } from '../../services/spinner-service/spinner.service';
   templateUrl: './table.component.html',
   styleUrls: ['./table.component.css'],
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, AfterViewInit {
   @Output() searchEvent: EventEmitter;
 
   private _data = [];
@@ -29,7 +29,8 @@ export class TableComponent implements OnInit {
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
       this.dataSource.paginator.firstPage();
-
+      this.changeDetectorRefs.detectChanges();
+      
       this._tableModel = this._data[0][tableSymbol];
       this.buildColumns();
       if (!this._originalData.length) {
@@ -56,7 +57,7 @@ export class TableComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  constructor(public spinnerService: SpinnerService,) {
+  constructor(public spinnerService: SpinnerService, private changeDetectorRefs: ChangeDetectorRef) {
     this.dataSource = new MatTableDataSource();
   }
 
@@ -64,7 +65,7 @@ export class TableComponent implements OnInit {
     this.searchEvent = new EventEmitter();
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -77,10 +78,12 @@ export class TableComponent implements OnInit {
   }
 
   renderComponent(propertyType: string, columnKey: string): boolean {
-    return propertyType.includes('Component');
+    const isComponent = propertyType.includes('Component');
+    const isBoolean = propertyType === Boolean.name;
+    return isComponent || isBoolean;
   }
 
-  applyFilter(event: Event) {
+  applyFilter(event: Event): void {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
@@ -89,7 +92,7 @@ export class TableComponent implements OnInit {
     }
   }
 
-  doSearch() {
+  doSearch(): void {
     this.searchEvent.emit(null);
   }
 

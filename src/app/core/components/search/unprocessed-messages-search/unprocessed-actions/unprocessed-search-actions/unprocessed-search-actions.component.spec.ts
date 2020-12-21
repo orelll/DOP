@@ -2,8 +2,8 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { HttpService } from 'src/app/core/services/http-service';
-import { UnprocessedMessagesService } from 'src/app/shared/services';
 import { DialogClipboardService } from 'src/app/shared/services/dialog-clipboard/dialog-clipboard.service';
+import { UnprocessedMessagesService } from '../unprocessed-messages.service';
 
 import { UnprocessedSearchActionsComponent } from './unprocessed-search-actions.component';
 

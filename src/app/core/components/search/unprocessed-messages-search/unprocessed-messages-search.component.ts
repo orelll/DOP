@@ -64,6 +64,7 @@ export class UnprocessedMessagesSearchComponent implements OnInit {
         message.errorDetails = DTO.errorDetails;
         message.message = DTO.message;
         message.id = DTO.id;
+        message.checked = false;
         return message;
       });
       this.spinnerService.setBusy(false);

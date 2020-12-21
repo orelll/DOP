@@ -4,7 +4,7 @@ import { HttpService } from 'src/app/core/services/http-service';
 import { Column, LogType } from './column-decorator';
 import { tableSymbol } from '../decorators/column-decorator';
 import { IssuesSearchActionsComponent } from 'src/app/core/components/search/issues-search/issues-actions/issues-search-actions.component';
-import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions.component';
+import { UnprocessedSearchActionsComponent } from 'src/app/core/components/search/unprocessed-messages-search/unprocessed-actions/unprocessed-search-actions/unprocessed-search-actions.component';
 import * as _ from 'lodash';
 import { ColumnModel } from '../models/columnModel';
 

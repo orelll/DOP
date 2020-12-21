@@ -1,0 +1,8 @@
+<div *ngIf='selectedItems.selected.length > 0'>
+  <button mat-icon-button (click)="archiveMessage()" class="action-button" title="Archive message">
+    <mat-icon>archive</mat-icon>
+  </button>
+  <button mat-icon-button color="warn" (click)="deleteMessage()" class="action-button" title="Delete message">
+    <mat-icon>delete</mat-icon>
+  </button>
+<div>
